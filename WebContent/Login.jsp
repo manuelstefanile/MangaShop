@@ -58,7 +58,7 @@
 
   <div id="login">
     <div id="videoLogin">
-      <video autoplay loop muted>
+      <video autoplay loop muted title="Video di Naruto">
         <source src="Video/naruto.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
       </video>
