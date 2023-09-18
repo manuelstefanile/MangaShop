@@ -7,7 +7,7 @@ function modalConfermaMostra(servletf,idf,nome_cognomef,tipof){
 	  console.log(tipof,idf);
 	  
 	  document.getElementById("modalConferma").style.display="block";
-	  document.getElementById("testoConferma").innerHTML="Sicuro di voler eliminare \"" + nome_cognomef +"\" ? L'eliminazione comporterà anche l'eliminazione di tutti i manga associati.";
+	  document.getElementById("testoConferma").innerHTML="Sicuro di voler eliminare \"" + nome_cognomef +"\" ?";
 	  var form = document.getElementById("formConferma");
 	  form.action=servletf;
 	  document.getElementById("tipoConferma").value= tipof;

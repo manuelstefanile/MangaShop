@@ -1,0 +1,319 @@
+/*sovrascrivo */
+ .prezzo{
+ 	    text-align: center;
+    color: black;
+    width: 150%;
+    /* width: 400px; */
+    height: 180px;
+    max-width: 100%;
+    margin-bottom: -90px;
+    position: absolute;
+    overflow: hidden;
+    top: 100%;
+    background-color: whitesmoke;
+ }
+ 
+ .titoloManga {
+    max-height: 96px;
+    /* height: 100px; */
+    height: 45px;
+    overflow: hidden;
+    margin: 0;
+    padding: 14px 5px 10px 5px;
+  }
+  
+  .button-acquista {
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #18181a;
+    color: #18181a;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 15px;
+    padding: 18px 18px 17px;
+    text-decoration: none;
+    cursor: pointer;
+    background: whitesmoke;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 0;
+    margin-top: 5px;
+    }
+    
+ /********************************************************DETTAGLIO************************/
+#bottoneAcquistaDetails{
+  left: 34%;
+    border-radius: 0;
+    margin-left: none;
+    width: 55%;
+}
+
+.cardDetails {
+    position: absolute;
+    top: 393px;
+    left: 26%;
+    transform: translate(-50%,-50%);
+aspect-ratio: 7/10;
+    background: #000;
+    border-radius: 0 20px 20px 0;
+}
+.cardDetails .image {
+    width: 22vw;
+    height: 100%;
+    overflow: hidden;
+    border-radius: 0 20px 20px 0;
+}
+.cardDetails .image img {
+    width: 100%;
+    height: 100%;
+    transition: .5s;
+    border-radius: 0 20px 20px 0;
+}
+.cardDetails:hover .image img {
+    opacity: .5;
+    transform: translateX(30%);/*100%*/
+    border-radius: 0 20px 20px 0;
+}
+.cardDetails .details {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70%;/*100%*/
+    height: 100%;
+    transition: .5s;
+    transform-origin: left;
+    transform: perspective(2000px) rotateY(-90deg);
+}
+.cardDetails:hover .details {
+    transform: perspective(2000px) rotateY(0deg);
+}
+.cardDetails .details .center {
+    padding: 20px;
+    text-align: center;
+    background:whitesmoke;
+    position: absolute;
+    top: 50%;
+    height: 92%;
+    transform: translateY(-50%);
+    border-radius: 0 0 0 0;
+}
+.cardDetails .details .center h1 {
+    margin: 0;
+    padding: 0;
+    color: #ff3636;
+    line-height: 20px;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.cardDetails .details .center h1 span {
+    font-size: 14px;
+    color: #262626;
+}
+.carcardDetails .details .center p {
+    margin: 10px 0;
+    padding: 0;
+    color: #262626;
+}
+.cardDetails .details .center ul {
+    margin: 10px auto 0;
+    padding: 0;
+    display: table;
+}
+.cardDetails .details .center ul li {
+    list-style: none;
+    margin: 0 5px;
+    float: left;
+}
+.cardDetails .details .center ul li a {
+    display: block;
+    background: #262626;
+    color: #fff;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    transform: .5s;
+}
+.cardDetails .details .center ul li a:hover {
+    background: #ff3636;
+}
+
+.contenitore{
+  margin-top: 3%;
+  background-color: white;
+  margin-left: 19%;
+    
+    width: 60vw;
+    padding-top: 6px;
+    padding-bottom: 20px;
+    
+}
+
+.contenitore h1{
+  margin-left: 40%;
+}
+.contenitore h2{
+  display: inline;
+  font-size: 22px;
+}
+.contenitore h2.descrizione{
+  font-size:23px;
+  margin-left: 40%;
+}
+
+.contenitore .bottone{
+  margin-left: 50%;
+  margin-top: 3%;
+}
+
+.contenitore p {
+  margin-left: 40%;
+  margin-right: 8%;
+      height: 190px;
+}
+.contenitore label{
+  margin-left: 55%;
+}
+
+
+
+
+
+/**************************************************************************************************************************/
+#quantita{
+  width: 50px;
+}
+.separatore{
+  border: 3px solid indianred;
+    border-radius: 5px;
+    margin-left: 49%;
+    margin-right: 4%;
+
+}
+
+.frecc{
+  
+  color: white;
+  width: 5%;
+  position: absolute;
+  top:10%;
+  left:90%;
+  animation-name: example;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  font-size: 30px;
+  display: block;
+  color: black;
+  opacity: 40%;
+}
+.frecc>i{
+  width: 100%;
+    height: 100%;
+    right: 18px;
+    position: inherit;
+}
+@keyframes example {
+  0%   { left:90%; }
+  75%  { left: 88%; }
+  100% { left: 90%; }
+}
+.frecc:nth-of-type(2){
+  top:80%
+}
+
+.responsive{
+  display: none;
+  height: 490px;
+  width: 100px;
+  
+}
+@media screen and (max-width: 990px){
+  .contenitore label{
+    margin-left: 2%;
+  }
+  #bottoneAcquistaDetails {
+    width: 100%;
+    border-radius: 0;
+    left: 0;
+  }
+  .contenitore p{
+    margin-left:4% ;
+  }
+  .responsive{
+    display: block;
+    border: 0;
+  }
+  .cardDetails {
+    
+    top: 430px;
+    left: 51%;
+  }
+  .cardDetails .image {
+    width: 32vw;
+    height: 100%;
+    
+    
+}
+.contenitore h1 {
+    margin-left: 3%;
+    font-size: 23px;
+}
+}
+@media screen and (max-width: 760px){
+
+
+  .cardDetails .image {
+    width: 44vw;
+    height: 100%;  
+}
+.responsive{
+    height: 540px;
+    }
+}
+@media screen and (max-width: 615px){
+  .responsive{
+    height: 460px;
+  }
+  body{
+  	font-size:10px;
+  }
+}
+
+@media screen and (max-width: 580px){
+  
+  .cardDetails{
+  	    top: 369px;
+  }
+  .contenitore label {
+    margin-left: 12%;
+}
+}
+@media screen and (max-width: 520px){
+  #quantita {
+    
+    margin-left: 35%;
+}
+.contenitore label {
+    margin-left: 27%;
+}
+}
+@media screen and (max-width: 420px){
+	  .contenitore label {
+    margin-left: 23%;
+}
+  .cardDetails .details .center{
+  	padding:10px;
+  }
+  .cardDetails{
+  	    top: 335px;
+  }
+  .details{
+  	font-size:15px;
+  }
+  .responsive{
+ 
+    height: 357px;
+  }
+}

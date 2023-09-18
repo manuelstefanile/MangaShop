@@ -83,6 +83,7 @@
     padding: 11px;
     cursor: pointer;
     border-radius: 42px;
+    margin:auto;
 }
 .contenitoreInput label,.contenitoreInput input{
   cursor: pointer;
@@ -95,13 +96,14 @@
   background-color: whitesmoke;
     width: 52%;
     max-inline-size: fit-content;
-    text-align: -webkit-center;
+    text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
 }
 .divImmagine{
   padding-top: 20px;
   min-width: 300px;
+  min-height: 186px;
 }
 
 
@@ -109,6 +111,7 @@
 @media screen and (max-width: 550px){
   #contenitore{
     font-size: 18px;
+     left: 10%; 
   }
 
 }
@@ -120,5 +123,20 @@
 }
 }
 
-
+@media screen and (max-width: 647px){
+.inputcontenitore input, .inputcontenitore label {
+    
+    font-size: 12px;
+    
+}
+}
+@media screen and (max-width: 650px){
+#contenitore {
+     left: 20%; 
+}
+}
+ 
+.div_select select {
+    width: 130%;
+}
 

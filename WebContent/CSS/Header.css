@@ -47,7 +47,8 @@ html, body {
   position: absolute;
   transition: all 0.1s;
   transition: background-color 0.3s;
-  padding: 25px;
+  display: flex;
+  
 }
 
 .divNav:nth-child(1){ 
@@ -72,6 +73,7 @@ html, body {
 .divNav a{
 	text-decoration: none;
 	color: white;
+	padding: 16px;
 }
 
 .flexbox>a:nth-child(2){
@@ -172,6 +174,53 @@ to {bottom: 53%;}
 .search > div > input:not(:placeholder-shown) {
   width: 180px;
 }
+/********************************************************SEARCH2"********************************************/
+#searchManga{
+      border-radius: 10px 10px 10px 10px;
+      background: ghostwhite;
+    position: absolute;
+    width: auto;
+    height: 103px;
+    top: 72px;
+    right: 200px;
+    z-index: 5;
+    display: inline-table;
+  
+  }
+  #searchManga > div:after {
+  	content: "";
+
+}
+  .contenitoreSearch{
+    border-bottom-width: 2px;
+    border-top-width: 0px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+         border-style:solid;"
+
+    z-index: 5;
+    width: 400px;
+   
+  }
+  .immagineSize{
+     padding: 15px 15px 0 10px;
+     border-radius:10px;
+     margin:10px;
+    width: 80px;
+    object-fit: contain;
+     cursor:pointer;
+  }
+  .immagineSize:hover {
+	box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+	
+	}
+  .testoSearchManga{
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    bottom: 50px;
+    width: 205px;
+  }
 
 
 
@@ -187,7 +236,7 @@ to {bottom: 53%;}
   top: 18PX;
   left: 8px;
   display: inline-block;
-  z-index: 1;
+  z-index: 0;
   transition: all 0.3s;
  }
  
@@ -248,7 +297,7 @@ to {bottom: 53%;}
     display: none;
   }
 
-  #scuro {
+  .scuro {
     position: fixed;
     top: 0;
     left: 0;
@@ -332,6 +381,18 @@ to {bottom: 53%;}
     z-index: 1;
     transition: all 0.3s;
  }
+ 
+ /***********NOTIFICA**************/
+ .notifica{
+background-color: red;
+    border-radius: 20px;
+    width: 20px;
+    position: absolute;
+    top: -5px;
+    left: 68px;
+    text-align: center;
+
+}
 
 /**********************************************RESPONSIVE*****************************/
  @media screen and (max-width: 1200px){
@@ -354,7 +415,12 @@ to {bottom: 53%;}
   }
 }
 @media screen and (max-width: 800px){
-
+#searchManga{
+      
+    right: 18px;
+    
+  
+  }
 
   .divNav:nth-child(3),.divNav:nth-child(4),.divNav:nth-child(5){
     display: none;
@@ -362,9 +428,7 @@ to {bottom: 53%;}
   #oggNavRespons3, #oggNavRespons4,#oggNavRespons5{
     display: block;
   }
-  .search{
-    right: 5px;
-  }
+
 }
 
 @media screen and (max-width: 500px){
@@ -374,5 +438,34 @@ to {bottom: 53%;}
   text-align: center;
   /* left: 128px; */
   margin: 20px;
+}
+#logoContenitore{
+	display:none;
+}
+}
+
+@media screen and (min-width: 501px){
+
+#logoContenitore{
+	display:block;
+}
+}
+@media screen and (max-width: 430px){
+.contenitoreSearch {
+   
+    width: 332px;
+}
+.testoSearchManga {
+	width:130px; 
+}
+}
+@media screen and (max-width: 364px){
+.contenitoreSearch {
+   
+    width: 273px;
+}
+.testoSearchManga {
+	font-size: small;
+	width:100px; 
 }
 }

@@ -17,29 +17,16 @@ function spostaElemento() {
 
 }
 
-function barraSearch(){
-  var larghezzaSchermo = window.innerWidth;
-  if (larghezzaSchermo < 500) { 
-    const search = document.querySelector(".search"); // seleziona l'elemento con classe "search"
-    const flexbox = document.querySelector(".flexbox"); // seleziona l'elemento con id "flexbox"
-    flexbox.parentNode.insertBefore(search, flexbox.nextSibling);
-  }
-  else{
-    const search = document.querySelector(".search"); // seleziona l'elemento con classe "search"
-    const flexbox = document.querySelector(".flexbox"); // seleziona l'elemento con id "flexbox"
-    flexbox.appendChild(search);
-  }
-}
 
 
 // Aggiungere un ascoltatore di eventi resize alla finestra del browser
 window.addEventListener('resize', spostaElemento);
-window.addEventListener('resize', barraSearch);
+
 
 
 // Chiamare la funzione per eseguirla la prima volta
 spostaElemento();
-barraSearch();
+
 
 
 
@@ -63,7 +50,8 @@ for (var i = 0; i < buttons.length; i++) {
 function openNav(navAprire) {
     document.getElementsByClassName(navAprire)[0].style.width = "200px";
     var overlay = document.createElement("div");
-    overlay.setAttribute("id", "scuro");
+    overlay.setAttribute("id", "scuroP");
+    overlay.className = "scuro";
     document.body.appendChild(overlay);
   }
 
@@ -81,7 +69,7 @@ function openNav(navAprire) {
     }}
     chiudi();
     document.getElementsByClassName(navChiudere)[0].style.width = "0%";
-    var overlay = document.getElementById("scuro");
+    var overlay = document.getElementById("scuroP");
     overlay.remove();
   }
   /***********************************************funzioni di apertura e chiusura dropdown*************************************** */

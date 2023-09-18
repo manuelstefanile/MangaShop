@@ -52,6 +52,12 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
         //Object attributeValue = session.getAttribute(attributeName);
         System.out.println("nome = " + attributeName );
     }
+	if(utente instanceof AmministratoreBean){
+
+			response.sendRedirect("ErroreServlet?errore=PagineManga");
+			return;
+		
+	}
 
 %>
 <%@include file="Header.jsp" %>
@@ -74,13 +80,14 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
   </div>
 
 
-<!-----------------------------------------------------categoria2--------------------------------------------->
+<!-----------------------------------------------------categoria2--------------------------------
 
 
   <div id="elencoFiltriCategoria">
     <p>pippo <i class="fa-sharp fa-light fa-x"></i>
     </p>
   </div>
+  ------------->
   <!---------------------------------------------ORDINA CATEGORIA---------------------->
   <div id="ordinaCategoria">
     <select id="ordina" onclick="ordina" name="ordina">
@@ -141,16 +148,16 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
     %>
 
     <figure class="snip1571">
-      <img src="data:image/jpeg;base64,<%=Copertina %>"  class="cover-image" />
-      <figcaption>
+      <img onclick="ReindirizzaDettaglio(<%=manga.getId()%>)" src="data:image/jpeg;base64,<%=Copertina %>"  class="cover-image cursore" />
+      <figcaption class="cursore" onclick="ReindirizzaDettaglio(<%=manga.getId()%>)">
         <h3><img src="data:image/jpeg;base64,<%=Titolo %>"  class="title" /></h3>
       </figcaption>
       <div class="prezzo">
         <p class="titoloManga"><%=manga.getNome() %></p>
-        <p class="prezzoManga"><%=manga.getPrezzo() %></p>
-        <form action="Admin2Servlet" method="post" >
-        <button class="button-acquista" value="<%=manga.getId() %>" name="buttonId" type="submit" role="button"><span class="text">Acquista</span><span>Aggiungi carrello</span></button>
-        </form>
+        <p class="prezzoManga"><%=manga.getPrezzo() %> &euro;</p>
+        
+        <button class="button-acquista" onclick="AggiungiCarrello('<%=manga.getId()%>',1)" value="<%=manga.getId() %>" name="buttonId" type="submit" role="button"><span class="text">Acquista</span><span>Aggiungi carrello</span></button>
+        
       </div>
     </figure>
     
@@ -160,94 +167,15 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
 
   </div>
   <!-------------------------------------------Paginazione-->
-  <div id="paginazioneCategoria"><p>pippo</p></div>
+  
 </div>
 
 
+<%@include file="Footer.html" %>   
+ <script src="JS/AggiungiAlCarrello.js"></script>  
+ <script src="JS/DettaglioMangaReindirizza.js"></script>  
 
-
-<script>
-document.getElementById("ordina").addEventListener("change", function() {
-	  var ordine = this.value; // Ottieni il valore selezionato dall'elemento select
-	  
-
-	  var listaManga = [
-	    <% if (listaManga != null) {
-	         for (MangaBean manga : listaManga) {
-	        	 
-	        	 String Copertina=null;
-	     		String Titolo=null;
-	             for(ImmaginiMangaBean immagine: immaginiManga){
-	             	if(manga.getImmagini_manga()==immagine.getId()){
-	             		try {
-	             			Copertina = new String(Base64.getEncoder().encode(immagine.getCover()));
-	             			Titolo = new String(Base64.getEncoder().encode(immagine.getTitolo()));
-	                     } catch (NullPointerException e) {
-	                        immagine = null;
-	                     }
-	             	}
-	             } 
- 
-	             %>
-	             {
-	                Copertina: "<%= Copertina %>",
-	                Titolo: "<%= Titolo %>",
-	                Nome: "<%= manga.getNome() %>",
-	                Prezzo: <%= manga.getPrezzo() %>
-	             },
-	             <% 
-	         }
-	     }
-	     %>
-	  ];
-	  
-
-	  // Ordina la lista in base al tipo selezionato
-	  if (ordine === "Prezzo") {
-	    listaManga.sort(function(a, b) {
-	      return a.prezzo - b.prezzo;
-	    });
-	  } else if (ordine === "Nome") {
-	    listaManga.sort(function(a, b) {
-	      return a.Nome.localeCompare(b.Nome);
-	    });
-	  } 
-
-	  // Aggiorna il contenuto del div con id "carteCategoria" con la lista ordinata
-	  var carteCategoriaDiv = document.getElementById("carteCategoria");
-	  carteCategoriaDiv.innerHTML = "";
-
-	  listaManga.forEach(function(manga) {
-	    // Genera il codice HTML per la singola carta di manga e aggiungilo al div "carteCategoria"
-	    var cardHtml = generateMangaCardHtml(manga);
-	    carteCategoriaDiv.innerHTML += cardHtml;
-	  });
-	});
-
-function generateMangaCardHtml(manga) {
-	  var Copertina = manga.Copertina; // Assumi che la proprietà Copertina contenga il valore corretto
-	  var Titolo = manga.Titolo; // Assumi che la proprietà Titolo contenga il valore corretto
-	  var Nome = manga.Nome; // Assumi che la proprietà Nome contenga il valore corretto
-	  var Prezzo = manga.Prezzo; // Assumi che la proprietà Prezzo contenga il valore corretto
-
-	  var cardHtml = "";
-	  cardHtml += '<figure class="snip1571">';
-	  cardHtml += '<img src="data:image/jpeg;base64,' + Copertina + '" class="cover-image" />';
-	  cardHtml += '<figcaption>';
-	  cardHtml += '<h3><img src="data:image/jpeg;base64,' + Titolo + '" class="title" /></h3>';
-	  cardHtml += '</figcaption>';
-	  cardHtml += '<div class="prezzo">';
-	  cardHtml += '<p class="titoloManga">' + Nome + '</p>';
-	  cardHtml += '<p class="prezzoManga">' + Prezzo + '</p>';
-	  cardHtml += '<button class="button-acquista" role="button"><span class="text">Modifica</span><span>Modifica</span></button>';
-	  cardHtml += '</div></figure>';
-
-	  return cardHtml;
-	}
-
-</script>
-
-
+<%@include file="JS/OrdinaJs.jsp" %>   
 
 
       

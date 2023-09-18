@@ -1,0 +1,22 @@
+/*sovrascrivo*/
+
+@media screen and (max-width: 647px){
+.inputcontenitore input, .inputcontenitore label {
+    
+    font-size: 12px;
+    
+}
+}
+@media screen and (max-width: 650px){
+#contenitore {
+     left: 20%; 
+}
+}
+@media screen and (max-width: 550px){
+#contenitore {
+     left: 10%; 
+}
+}
+.div_select select {
+    width: 130%;
+}

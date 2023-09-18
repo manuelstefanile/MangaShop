@@ -11,23 +11,12 @@ function effettoImmaginiReverse(){
   }
   
 /********************funzione errore dei Duplicati autore,editore,categoria********/
-function errorDuplicate(testo){
-	  // Mostra il messaggio di errore
-    var errorMessage = $("<div>").addClass("errore").text(testo);
-    $("#erroreDuplicate").append(errorMessage);
-    
-    // Nascondi il messaggio dopo 3 secondi
-    setTimeout(function() {
-      errorMessage.fadeOut("slow", function() {
-        $(this).remove();
-      });
-    }, 2400);
-	
-}
+
 
 /**********************funzione inserimento autore,editore,categoria**************/
 /*con chiamata ajax per ogni tipo. Se la risposta ricevuta dalla servlet è null
- * vuol dire che è un duplicato, altrimenti salva normalmente*/
+ * vuol dire che è un duplicato, altrimenti salva normalmente.
+ * Qui mi prendo solo i nomi ed eventualmente i cognomi.*/
 
 
 function insert() {
@@ -201,21 +190,6 @@ function loadDoc() {
 
 /*************************funzione del check di validita di alcuni input********************/
 
-
-
-function checkInputValue(input) {
-	 let inputVal = parseInt(input.value);
-
-	  // verifica se il numero intero è uguale alla stringa dell'input
-	  if (inputVal.toString() !== input.value || inputVal < 0) {
-	    // l'input non è un numero naturale
-	    input.setCustomValidity('Inserisci solo numeri Interi Naturali ex. 1,2,3,4...');
-	  } else {
-	    // l'input è un numero naturale
-	    input.setCustomValidity('');
-	  }
-	  
-	}
 	
 /**********************aggiorno le liste autori,categoria,editore************/
 loadDoc();

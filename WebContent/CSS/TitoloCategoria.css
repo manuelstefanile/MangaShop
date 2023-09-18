@@ -47,3 +47,10 @@
       background-position: right top;
     }   
 }
+
+@media screen and (max-width: 400px){
+	.barraTitolo{
+		font-size:18px;
+	}
+	
+}

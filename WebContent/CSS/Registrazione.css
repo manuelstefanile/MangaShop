@@ -15,7 +15,8 @@
   /* display: flex; */
   justify-content: center;
   align-items: center;
-  margin-bottom: -8%;
+  
+  margin-bottom: 150px;
   
   }
   
@@ -149,12 +150,28 @@
     bottom: 64%;
     left: 87px;
     transform: translateY(-50%);
+    
+}
+.input-password .eye-icon i {
     cursor: pointer;
+    
 }
 
-
 /*******************************************************************************************************************************/
-
-
+    
+  @media screen and (max-width: 650px) {
+    #contenitore{
+      min-width: 270px;
+  
+    }
+    
+  }
+    @media screen and (max-width: 281px) {
+    #contenitore{
+      min-width: 200px;
+  
+    }
+    
+  }
 
  

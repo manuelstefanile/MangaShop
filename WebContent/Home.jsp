@@ -1,3 +1,5 @@
+<%@page import="Beans.WishlistBean"%>
+<%@page import="Beans.CarrelloBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="Beans.Profilo" %>
@@ -29,13 +31,15 @@
   <link rel="stylesheet" href="CSS/Bottone.css">
   <link rel="stylesheet" href="CSS/Carte.css">
   <link rel="stylesheet" href="CSS/TitoloCategoria.css">
+  <link rel="stylesheet" href="CSS/erroreOut.css">
+  <link rel="stylesheet" href="CSS/CaricamentoAjax.css">
+  <link rel="stylesheet" href="CSS/Home.css">
   
+  
+  <script src="JS/Errore.js"></script>
 
 
 <style type="text/css">
-
- 
-  
 
 
 </style>
@@ -43,14 +47,36 @@
 </head>
 <%  Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
 
+if(utente instanceof AmministratoreBean){
+	response.sendRedirect("ErroreServlet?errore=HomeUtente");
+	return;
+}
+
 
 HashMap<String,List<Manga_Img>> mappalista =(HashMap<String,List<Manga_Img>>) session.getAttribute("mappalista");
+String errore= (String)request.getParameter("errore");
 
     %>
 <body>
 
 <%@include file="Header.jsp" %>
 
+ <%if(errore!=null && errore.equals("0")){
+	out.println("<script>");
+	out.println("window.onload = function() {");
+	out.println("  Successo('Registrazione avvenuta con successo');"); // Chiamata alla funzione JavaScript
+	out.println("};");
+	out.println("</script>");
+	
+}
+//request.setAttribute("errore", null);
+%>
+
+<div id="erroreTipo"></div>   
+<!------------------------------------------------- CARICAMENTO AJAX---> 
+
+
+     
 
  <!---------------------------------------------------VIDEO----------------------------------------------------->
   <div class="wrappper">
@@ -71,13 +97,15 @@ HashMap<String,List<Manga_Img>> mappalista =(HashMap<String,List<Manga_Img>>) se
 
 		  <div class="barraTitolo">
 		    <span class="TitoloGrande"><%=key %></span>
-		    <span class="vediTutto"> Vedi tutto</span>
+		     
+		    <span onclick="redirectToLista('categoria','<%=key%>')" class="vediTutto"> Vedi tutto</span>
 		  </div>  
 		  <div class="carte">
 		  
 		  <% 
 		  List<Manga_Img> mangaList = mappalista.get(key);
 		  for (Manga_Img manga : mangaList) {
+			  Integer id=manga.getId();
 			  String Copertina=null;
 			  String Titolo=null;
 			  String Personaggio=null;
@@ -94,17 +122,17 @@ HashMap<String,List<Manga_Img>> mappalista =(HashMap<String,List<Manga_Img>>) se
 			%>
 			
 
-    <div class="card">
-      <div class="wrapper">
+    <div class="card" >
+      <div class="wrapper" onclick="ReindirizzaDettaglio(<%=id%>)">
         <img src="data:image/jpeg;base64,<%=Copertina %>"class="cover-image" />
       </div>
-      <img src="data:image/jpeg;base64,<%=Titolo %>"  class="title" />
-      <img src="data:image/jpeg;base64,<%=Personaggio %>" class="character" />
+      <img onclick="ReindirizzaDettaglio(<%=id%>)" src="data:image/jpeg;base64,<%=Titolo %>"  class="title" />
+      <img onclick="ReindirizzaDettaglio(<%=id%>)" src="data:image/jpeg;base64,<%=Personaggio %>" class="character" />
       
       <div class="prezzo">
-        <p class="titoloManga"><%=manga.getNome()%></p>
-        <p class="prezzoManga"><%=manga.getPrezzo()%> euro</p>
-        <button class="button-acquista" role="button"><span class="text">Acquista</span><span>Carrello</span></button>
+        <p class="titoloManga" onclick="ReindirizzaDettaglio(<%=id%>)"><%=manga.getNome()%></p>
+        <p class="prezzoManga"><%=manga.getPrezzo()%> &euro;</p>
+        <button class="button-acquista" onclick="AggiungiCarrello('<%=id %>',1)" role="button"><span class="text">Acquista</span><span>Carrello</span></button>
       </div>
     </div>
     
@@ -120,8 +148,17 @@ HashMap<String,List<Manga_Img>> mappalista =(HashMap<String,List<Manga_Img>>) se
   } %>
 
   
+<%@include file="Footer.html" %>   
+ <script src="JS/RedirectCategoria.js"></script>  
+ <script src="JS/DettaglioMangaReindirizza.js"></script>  
+ <script src="JS/AggiungiAlCarrello.js"></script>  
+ <script type="text/javascript">
+//Modifica solo l'URL senza ricaricare la pagina
+ history.replaceState({}, "", "HomePage.jsp");
 
-                
+ 
+ </script>
+ 
  
 
 

@@ -3,28 +3,49 @@
 <%@ page import="Beans.AmministratoreBean" %>
 <%@ page import="Beans.UtenteBean" %>
 <%@ page import="Beans.CategoriaBean" %>
+<%@ page import="Beans.WishlistBean" %>
+<%@ page import="Beans.CarrelloBean" %>
 <%@ page import="java.util.*" %>
 <html>
 
 <head>
-  <script src='https://kit.fontawesome.com/5e1004225b.js' crossorigin='anonymous'></script>
+  <script src='https://kit.fontawesome.com/5e1004225b.js' ></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
   <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
-  
+  <link rel="stylesheet" href="CSS/Footer.css">
   <link rel="stylesheet" href="CSS/Header.css">
   
 
-  <style>
-  <%  Profilo u = (Profilo) request.getSession().getAttribute("Profilo");
+  
+  <%! Profilo u=null;%>
+  
+  <%  
+  
+  
+  try {
+	u=(Profilo) request.getSession().getAttribute("Profilo");  
+  }catch(Exception e){
+	  u=null;
+  }
+
   List<CategoriaBean> categorieHeader=(List<CategoriaBean>)session.getAttribute("listaCategorie");
+  List<CarrelloBean> carrello= (List<CarrelloBean>)session.getAttribute("carrello");
+  if(carrello==null){
+	  carrello=new ArrayList<CarrelloBean>();
+	  session.setAttribute("carrello", carrello);
+  }
+  boolean amministratore = u instanceof AmministratoreBean;
+  
+  //WishlistBean wish= (WishlistBean)session.getAttribute("wishlist");
     %>
 
 
-  </style>
+  
 </head>
 
-<body>
+<body  onload="UtenteAdmin(<%=amministratore%>)">
 
 <!---------------------------------------------NAVBAR HEADER--------------------------------------------->
 <div id="myNav" class="overlay submenu-test">
@@ -37,17 +58,26 @@
     	<div class="divNav"><a href="AdminHome.jsp">Home</a></div>
     	<div class="divNav"><a href="AdminAggiungiManga.jsp">Aggiungi Manga</a></div>
     	<div class="divNav"><a href="Editori.jsp">Editori</a></div>
-    	<div class="divNav"><a href="Categorie.jsp">Categoria</a></div>
+    	<div class="divNav" style="right:80px;"><a href="Categorie.jsp">Categoria</a></div>
     	<div class="divNav"><a href="Autori.jsp">Autori</a></div>
 
     <%}else {%>
         <div class="divNav"><a href="HomePage.jsp" >Home</a></div>
-    	<div class="divNav"><a>Novità</a></div>
+    	<div onclick="redirectToLista('novita','0')" class="divNav"><a>Novità</a></div>
+    	
+    	<div class="divNav">
+    		<a class="carro" href="CarrelloServlet?carrello=true">Carrello</a>
+    		<% if(carrello!=null && carrello.size()!=0){ %>
+    		<div class="notifica"><%=carrello.size() %></div>
+    		<% }%>
+    		</div>
+    	
     	<%if (u instanceof UtenteBean ) { %>
     	<div class="divNav"><a href="LogoutServlet">Logout</a></div>
-    	<div class="divNav"><a>Ordini</a></div>
-    	<div class="divNav"><a>Carrello</a></div>
+    	<div class="divNav"><a href="OrdiniServlet">Ordini</a></div>
+    	
     	<%}else { %>
+    	
     	<div class="divNav"><a href="Login.jsp">Login</a></div>
     	
     	<%} %>
@@ -58,7 +88,7 @@
     
    
     <div id="logoContenitore">
-      <p id="logoTitolo">MangaShop.it <div id="logoCerchio"> </div></p>
+      <p id="logoTitolo">MangaShop.it <div id="logoCerchio"> </div> </p>
       
     </div>
     <div id="myNav" class="overlay headerMenu">
@@ -67,6 +97,7 @@
         <% if(u instanceof AmministratoreBean){ %>
                 
                 <a href="LogoutServlet">Logout</a>
+                <a href="AdminListaUtentiServlet?utenti=1">Utenti</a>
         <%}else{
         	if(u instanceof UtenteBean){	
         	%>
@@ -89,9 +120,11 @@
         <%if(u instanceof UtenteBean){%>
         	<a href="ProfiloPage.jsp">Profilo</a>
 
+        <% }else if(u==null){%>
+        	<a href="Registrazione.jsp">Registrazione</a>
         <% } %>
-
-        <a href="#">Lista dei desideri</a>
+		
+        
         
         <%} %>
         
@@ -104,64 +137,45 @@
         <%}else{ %>
         		<a href="#" id="oggNavRespons1">Novita</a>
         		<a href="HomePage.jsp" id="oggNavRespons2" >Home</a>
+        		<a href="CarrelloServlet?carrello=true" id="oggNavRespons5" >Carrello
+        			<% if(carrello!=null && carrello.size()!=0){ %>
+    					<div style="left:130px; top: 343px;" class="notifica"><%=carrello.size() %></div>
+    				<% }%>
+        			
+        		</a>
         		<%if (!(u instanceof UtenteBean)){%>
         			<a href="Login.jsp" id="oggNavRespons3" >Login</a>
+        			
         		<% }else { %>
         		<a href="LogoutServlet" id="oggNavRespons3" >Logout</a>
-        		<a href="#" id="oggNavRespons4" >Ordini</a>
-        		<a href="#" id="oggNavRespons5" >Carrello</a>
+        		<a href="OrdiniServlet" id="oggNavRespons4" >Ordini</a>
+        		
         	<% }%>
 
         <%} %>
 
       </div>
     </div>
-    <%if(u instanceof UtenteBean || u instanceof AmministratoreBean) {
-    	%>
-    	<div class="search"  >
-    	<%
-    }else {%>
-    <div class="search" style="right:87px;">
-    <%} %>
+    
+    <div class="search">
+    
       <div>
-        <input type="text" placeholder="Search . . ." required>
+        <input type="text"  onkeyup="showResult(this.value)" placeholder="Search . . ." required>
       </div>
+
     </div>
+   <div id="searchManga">
+ 	
+   </div>
   </div>
     <!---------------------------------------------------MENU LATERALE----------------------------------------------------->
         <span id="menuLaterale" style="font-size:30px;cursor:pointer" onclick="openNav('headerMenu')"><i
             class="fa-sharp fa-solid fa-list"></i></span>
             
  <script src="JS/Header.js"></script>
-<script>
-function redirectToLista(categoria,id){
-	
-	var form = document.createElement("form");
-	  form.setAttribute("method", "post");
-	  form.setAttribute("action", "PagineMangaServlet");
-	  form.setAttribute("target", "hiddenFrame"); // Nome del frame o finestra nascosta
-
-	  // Aggiungi i parametri come campi nascosti nel modulo
-	  var parametro1 = document.createElement("input");
-	  parametro1.setAttribute("type", "hidden");
-	  parametro1.setAttribute("name", "tipo");
-	  parametro1.setAttribute("value", categoria);
-	  form.appendChild(parametro1);
-
-	  var parametro2 = document.createElement("input");
-	  parametro2.setAttribute("type", "hidden");
-	  parametro2.setAttribute("name", "id");
-	  parametro2.setAttribute("value", id);
-	  form.appendChild(parametro2);
-
-	  document.body.appendChild(form);
-
-	  form.submit();
-
-		}
-
-
-</script>
+ <script src="JS/RedirectCategoria.js"></script>
+  <script src="JS/DettaglioMangaReindirizza.js"></script>  
+<%@include file="JS/HeaderJs.jsp" %> 
 </body>
 
 </html>

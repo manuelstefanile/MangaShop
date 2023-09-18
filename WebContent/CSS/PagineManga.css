@@ -1,3 +1,9 @@
+/*sovrascrivo*/
+.barraTitolo {
+	margin-top:5px;
+	
+}
+
 #categoriaP{
   
     display: flex;
@@ -51,8 +57,8 @@
     
   }
   #carteCategoria{
-    
-    flex-basis: 80%;
+    min-height:250px;
+    flex-basis: 100%;
     
   }
   #paginazioneCategoria{
@@ -116,12 +122,18 @@
     transition: all 0.35s ease;
   }
   .snip1571 img {
-    backface-visibility: hidden;
-    max-width: 100%;
+       backface-visibility: hidden;
+    /* max-width: 100%; */
+   /* max-height: 100px;*/
+    width: auto;
+    max-width: 240px;
+    /* left: 50%; */
+    /* position: relative; */
     vertical-align: top;
   }
   .snip1571 figcaption {
-    bottom: 28%;
+    width: 100%;
+    bottom: 240px;
     left: 0;
     position: absolute;
     z-index: 0;
@@ -164,10 +176,12 @@
     right: -5px;
   }
   .prezzo{
+     height: 225px;
+    max-height: 225px;
     position: relative;
     margin-bottom: 0;
     background-color: white;
-      color: black;
+    color: black;
   }
   .prezzo .button-acquista{
     margin-left: 0;
@@ -233,6 +247,9 @@
   figcaption h3{
       position: relative;
     margin-bottom: 25px;
+  }
+  .cursore{
+  	cursor: pointer;
   }
   
   

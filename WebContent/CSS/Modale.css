@@ -1,12 +1,13 @@
 /**************************************modale************************/
 #modaleProfilo{
-	    text-align: -webkit-center;
+	    text-align: center;
 	width: 100%;
 	position: fixed;
 	height: 100%;
     top: 0;
 	display: none;
   overflow: auto;
+      text-align: -webkit-center;
   z-index: 4;
 }
 #modaleProfiloBody{

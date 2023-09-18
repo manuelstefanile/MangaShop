@@ -25,16 +25,19 @@
 
 .cover-image {
   width: 100%;
-  height: 100%;
-  min-height:365px;
+  /*height: 100%;
+  min-height:365px;*/
   object-fit: cover;
+  cursor:pointer;
 }
 
 .wrapper {
   transition: all 0.5s;
   position: absolute;
   width: 100%;
+  max-width:225px;
   z-index: -1;
+  cursor:pointer;
 }
 
 .card:hover .wrapper {
@@ -84,20 +87,26 @@
   height: 120px;
 }
 .title {
-  width: 100%;
-  transition: transform 0.5s;
+	cursor:pointer;
+  
+    transition: transform 0.5s;
+    width: auto;
+    max-width:208px;
+    max-height: 65px;
 }
 .card:hover .title {
   transform: translate3d(0%, -50px, 100px);
 }
 
 .character {
-  width: 80%;
-  opacity: 0;
-  bottom: 35px;
-  transition: all 0.5s;
-  position: absolute;
-  z-index: 0  ;
+	cursor:pointer;
+    width: auto;
+    opacity: 0;
+    bottom: 35px;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: 0;
+    max-height: 200px;
 }
 
 .card:hover .character {
@@ -112,7 +121,7 @@
   height: 555px;
   /* justify-content: center; */
   /* align-items: center; */
-  margin-top: 76px;
+  margin-top: 30px;
   margin-bottom: 5px;
 }
 
@@ -127,23 +136,30 @@
 
 }
 
-.prezzo p {
-  margin:0;
-}
+
 
 
 .titoloManga{
-  padding: 14px 0 10px 0;
+  max-height: 96px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0;
+    padding: 14px 5px 10px 5px;
   
 }
 .prezzoManga{
-  
-  font-size: 26px;
+      margin: 0;
+    font-size: 26px;
 }
 @media screen and (max-width: 600px){
   .barraTitolo{
     text-align: left;
   }
+  .title {
+
+    max-width:181px;
+    
+}
 }
 @media screen and (max-height: 600px){
   .card{

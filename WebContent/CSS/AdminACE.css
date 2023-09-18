@@ -74,5 +74,17 @@
   margin-top:0;
 
 }
-
+@media screen and (max-width: 500px){
+	input {
+	width:70px;
+}
+	
+}
+@media screen and (max-width: 500px){
+.cellGeneral textarea {
+    width: 85px;
+    
+    
+}
+}
    

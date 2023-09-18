@@ -83,11 +83,11 @@
     <form class="formModal formAutore"  enctype="multipart/form-data">
       <div class="modaleInput">
         <label for="nomeAutore" >Nome</label>
-        <input type="text" name="nomeAutore" id="nomeAutore">
+        <input type="text" maxlength="20" name="nomeAutore" id="nomeAutore">
       </div>
       <div class="modaleInput">
         <label for="cognomeAutore" >Cognome</label>
-        <input type="text" name="cognomeAutore" id="cognomeAutore">
+        <input type="text" maxlength="30" name="cognomeAutore" id="cognomeAutore">
       </div>
     </form>
 
@@ -95,26 +95,26 @@
     <form class="formModal formCategoria">
       <div class="modaleInput">
         <label for="nomeCategoria" >Categoria</label>
-        <input type="text" name="nomeCategoria" id="nomeCategoria">
+        <input type="text" maxlength="20" name="nomeCategoria" id="nomeCategoria">
       </div>
       <div class="modaleInput">
         <label for="descrizioneCategoria" >Descrizione categoria</label>
-        <textarea rows="4" name="descrizioneCategoria" id="descrizioneCategoria"></textarea>
+        <textarea rows="4" maxlength="255" name="descrizioneCategoria" id="descrizioneCategoria"></textarea>
       </div>
     </form>
 
     <form class="formModal formEditore">
       <div class="modaleInput">
         <label for="nomeEditore" >Casa editrice</label>
-        <input type="text" name="nomeEditore" id="nomeEditore">
+        <input type="text" maxlength="20" name="nomeEditore" id="nomeEditore">
       </div>
     </form>
     
      <form class="formModal formCartaCredito">
       
       <div class="modaleInput">
-        <label for="codice" >codice</label>
-        <input type="text" name="codice" id="codice">
+        <label for="codice" >Codice</label>
+        <input type="text" name="codice" placeholder="1234 2345 2345 6789" maxlength="16" id="codice">
       </div>
       <div class="modaleInput">
         <label for="data" >Data</label>
@@ -122,34 +122,34 @@
       </div>
       <div class="modaleInput">
         <label for="nome" >Nome e cognome</label>
-        <input type="text" name="nomeTitolare" id="nomeTitolare">
+        <input type="text" name="nomeTitolare" placeholder="Mario Rossi" id="nomeTitolare">
       </div>
       <div class="modaleInput">
-        <label for="cvc" >cvc</label>
-        <input type="text" name="cvc" id="cvc">
+        <label for="cvc" >CVC</label>
+        <input type="text" maxlength=3 placeholder="098" name="cvc" id="cvc">
       </div>
     </form>
 
     <form class="formModal formIndirizzo">
       <div class="modaleInput">
         <label for="Regione" >Regione</label>
-        <input type="text" name="regione" id="regione">
+        <input type="text" placeholder="Campania" required name="regione" id="regione">
       </div>
       <div class="modaleInput">
         <label for="Provincia" >Provincia</label>
-        <input type="text" name="provincia" id="provincia">
+        <input type="text" placeholder="Napoli" required name="provincia" id="provincia">
       </div>
       <div class="modaleInput">
-        <label for="cap" >cap</label>
-        <input type="cap" name="cap" id="cap">
+        <label for="cap" >Cap</label>
+        <input type="text" placeholder="80039" maxlength="5" required name="cap" id="cap">
       </div>
       <div class="modaleInput">
-        <label for="citta" >citta</label>
-        <input type="citta" name="citta" id="citta">
+        <label for="citta" >Citta</label>
+        <input type="text" placeholder="Cicciano" required name="citta" id="citta">
       </div>
       <div class="modaleInput">
-        <label for="via" >via</label>
-        <input type="via" name="via" id="via">
+        <label for="via" >Via</label>
+        <input type="text" placeholder="Via torino 12" required name="via" id="via">
       </div>
     </form>
 

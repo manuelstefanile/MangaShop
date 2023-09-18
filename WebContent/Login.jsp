@@ -29,16 +29,19 @@
     
   }
  
-  
-
-
 </style>
-  
+  <% 
+  	String carrelloReindirizzo= request.getParameter("Acquisto");
+  %>
 </head>
 
 <body>
 
 <%@include file="Header.jsp" %>
+<% if(u!=null || u instanceof AmministratoreBean){
+	response.sendRedirect("ErroreServlet?errore=Login");
+	return;
+} %>
 
 	
 
@@ -62,6 +65,7 @@
     </div>
     <div id="titoloLogin"><p>Login</p></div>
     <form id="formLogin" method="post" action="LoginServlet">
+    <input type="hidden" name="carrelloReindirizzo" value="<%=carrelloReindirizzo%>">
         <div class="inputLogin">
           <label for="email"><i class="fa-sharp fa-solid fa-envelope"></i> Email</label>
           <input required type="email" id="email" name="email" >
@@ -79,8 +83,8 @@
         </form>
         </div>
         
-                
- <script src="JS/Registrazione.js"> </script>
+<%@include file="Footer.html" %>   
+ <script src="JS/ControlliUtente.js"> </script>
 <script type="text/javascript">
 if (performance.navigation.type === 1) {
     // Reload the page only when the user manually refreshes the page

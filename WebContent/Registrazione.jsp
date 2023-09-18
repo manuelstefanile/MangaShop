@@ -46,7 +46,12 @@ input:invalid + span {
 <body>
 
 <%@include file="Header.jsp" %>
-<%   System.out.println(request.getParameter("errore"));
+
+<%   
+	if(u!=null){
+		response.sendRedirect("ErroreServlet?errore=Registrazione");
+		return;
+	}
 	%>
 
 
@@ -70,9 +75,9 @@ input:invalid + span {
               </div>
               <div class="inputcontenitore input-password">
                 <label for="password"><i class="fa-sharp fa-solid fa-envelope"></i> Password</label>
-                <input type="password" minlength="8" required id="password"  name="password" >
-                 <span class="eye-icon" onclick="togglePasswordVisibility()">
-    			<i class="fa fa-eye-slash"></i>
+                <input type="password" minlength="8" required id="password" title="Inserisci almeno 8 caratteri, almeno una maiuscola ed almeno un numero"  name="password" >
+                 <span class="eye-icon" >
+    			<i class="fa fa-eye-slash" onclick="togglePasswordVisibility()"></i>
     			
               </div>
               <div class="inputcontenitore">
@@ -94,8 +99,8 @@ input:invalid + span {
                  </div>
                 </form>
                 </div>
-                
- <script src="JS/Registrazione.js"> </script>
+<%@include file="Footer.html" %>   
+ <script src="JS/ControlliUtente.js"> </script>
 <script type="text/javascript">
 if (performance.navigation.type === 1) {
     // Reload the page only when the user manually refreshes the page
