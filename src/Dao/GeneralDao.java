@@ -60,7 +60,8 @@ public class GeneralDao implements GeneralDaoInterface {
         		insertSQL+=")";
         	}
         }
-        		
+        
+        System.out.println(insertSQL);
         
         try {
 
@@ -479,7 +480,7 @@ public <T extends General> List<T> retriveByCampo(T oggetto,Object campo,Object 
 	    	retriveByCampo+=field.getName() + "=\"" + id +"\""; 
 	    	}
 	    }
-	System.out.println(retriveByCampo);
+	
 	ArrayList<T> oggettoReturn = new ArrayList<>();
 	
 	
@@ -535,7 +536,7 @@ public <T extends General> List<T> retriveByCampo(T oggetto,Object campo,Object 
 		// TODO: handle exception
 	}
 	   
-	   System.out.println(oggettoReturn);
+	   
 	return oggettoReturn;
 }
 }

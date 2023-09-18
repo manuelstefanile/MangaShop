@@ -26,6 +26,8 @@
   <link rel="stylesheet" href="CSS/Bottone.css">
   <link rel="stylesheet" href="CSS/Button-81.css">
   <link rel="stylesheet" href="CSS/ModaleConferma.css">
+  
+  <script src="JS/Errore.js"></script>
 
   
 
@@ -90,7 +92,8 @@ String errore=null;
 Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
 
 if(!(utente instanceof AmministratoreBean)){
-	response.sendRedirect("ErorrAutorizzazione.jsp");
+	response.sendRedirect("ErroreServlet?errore=Adminace");
+	return;
 } else {
 errore= (String)request.getParameter("errore");
 
@@ -123,7 +126,7 @@ editori = generale.get(0) instanceof EditoreBean ? (List<EditoreBean>)generale: 
 } 
 request.setAttribute("errore", null);
 %>
-<div id="erroreDuplicate"></div>
+<div id="erroreTipo"></div>
 
 <!---------------------------------------------------TABLE----------------------------------------------------->
 <form id="tableACE" name="tableACE" action="AdminServlet" method="post">
@@ -145,15 +148,15 @@ request.setAttribute("errore", null);
     for(AutoreBean autore :autori)  {
     	out.print("<div class=\"rowGeneral\" id=\"bottoniAzione\">");
     	out.print("<div class=\"cellGeneral\">");
-    	out.print("<input name=\"nomeAutore"+autore.getId()+"\" value=\"" + autore.getNome() + "\" ></div> ");
+    	out.print("<input type='text' maxlenght='20' class='nomeAutore'   name=\"nomeAutore"+autore.getId()+"\" value=\"" + autore.getNome() + "\" ></div> ");
     	
     	out.print("<div class=\"cellGeneral\">");
-    	out.print("<input name=\"cognomeAutore"+autore.getId()+"\" value=\"" + autore.getCognome() + "\" ></div> ");
+    	out.print("<input maxlength='30' type='text' class='cognomeAutore'  name=\"cognomeAutore"+autore.getId()+"\" value=\"" + autore.getCognome() + "\" ></div> ");
     	
     	out.print("<div class=\"cellGeneral\" id=\"bottoniAzione\">");
 		out.print("<button class=\"button-81 cestino\" type=\"button\" role=\"button\"    onclick=\"modalConfermaMostra('AdminServlet',"+ autore.getId() +",\'"+ autore.getCognome() +"\','autore')\"  >");
 		out.print("<i class=\"fa-sharp fa-solid fa-trash\"></i></button>");
-		out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ autore.getId() +",'autore')\"   role=\"button\">Salva</button>");
+		out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ autore.getId() +",'autore',controlloAutore(document.getElementsByName('nomeAutore"+autore.getId()+"')[0],document.getElementsByName('cognomeAutore"+autore.getId()+"')[0]))\"   role=\"button\">Salva</button>");
     	out.print("</div></div>");
     	
     	
@@ -178,12 +181,12 @@ request.setAttribute("errore", null);
         for(EditoreBean editore:editori)  {
         	out.print("<div class=\"rowGeneral\" id=\"bottoniAzione\">");
         		out.print("<div class=\"cellGeneral\">");
-        		out.print("<input name=\"nomeEditore"+editore.getId()+"\" value=\"" + editore.getNome() + "\" ></input></div> ");
+        		out.print("<input type='text' class='nomeEditore' name=\"nomeEditore"+editore.getId()+"\" value=\"" + editore.getNome() + "\" ></input></div> ");
         	
         		out.print("<div class=\"cellGeneral\" id=\"bottoniAzione\">");
         			out.print("<button class=\"button-81 cestino\" type=\"button\" role=\"button\"    onclick=\"modalConfermaMostra('AdminServlet',"+ editore.getId() +",\'"+ editore.getNome() +"\','editore')\"  >");
         				out.print("<i class=\"fa-sharp fa-solid fa-trash\"></i></button>");
-        				out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ editore.getId() +",'editore')\"   role=\"button\">Salva</button>");
+        				out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ editore.getId() +",'editore',controlloEditore(document.getElementsByName('nomeEditore"+editore.getId()+"')[0]))\"   role=\"button\">Salva</button>");
         		out.print("</div></div>");
         	
         	
@@ -207,15 +210,15 @@ request.setAttribute("errore", null);
         for(CategoriaBean categoria: categorie)  {
         	out.print("<div class=\"rowGeneral\" id=\"bottoniAzione\">");
         	out.print("<div class=\"cellGeneral\">");
-        	out.print("<input name=\"nomeCategoria"+categoria.getId()+"\"  value=\"" + categoria.getNome() + "\" ></div> ");
+        	out.print("<input type='text' class='nomeCategoria' name=\"nomeCategoria"+categoria.getId()+"\"  value=\"" + categoria.getNome() + "\" ></div> ");
         	
         	out.print("<div class=\"cellGeneral\">");
-        	out.print("<textarea rows=\"4\" name=\"descrizioneCategoria"+categoria.getId()+"\" > " + categoria.getDescrizione() + " </textarea></div> ");
+        	out.print("<textarea rows=\"4\" type='text' class='descrizioneCategoria' name=\"descrizioneCategoria"+categoria.getId()+"\">"+categoria.getDescrizione()+"</textarea></div> ");
         	
         	out.print("<div class=\"cellGeneral\" id=\"bottoniAzione\">");
         	out.print("<button class=\"button-81 cestino\" type=\"button\" role=\"button\"    onclick=\"modalConfermaMostra('AdminServlet',"+ categoria.getId() +",\'"+ categoria.getNome() +"\','categoria')\"  >");
     		out.print("<i class=\"fa-sharp fa-solid fa-trash\"></i></button>");
-        	out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ categoria.getId() +",'categoria')\"   role=\"button\">Salva</button>");
+        	out.print("<button class=\"button-81\" type=\"button\" onclick=\"salvaModifica('AdminServlet',"+ categoria.getId() +",'categoria',controlloCategoria(document.getElementsByName('nomeCategoria"+categoria.getId()+"')[0],document.getElementsByName('descrizioneCategoria"+categoria.getId()+"')[0]))\" role=\"button\">Salva</button>");
         	out.print("</div></div>");
         	
         	
@@ -242,7 +245,9 @@ request.setAttribute("errore", null);
        
  <script src="JS/ModaleConferma.js"></script>
  <script src="JS/AdminACE.js"></script>
+ 
  <script type="text/javascript">
+ 
  if (performance.navigation.type === 1) {
 	    // Reload the page only when the user manually refreshes the page
 	    window.location.href = window.location.pathname;

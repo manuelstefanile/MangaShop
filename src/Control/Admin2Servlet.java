@@ -62,6 +62,11 @@ public class Admin2Servlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//porta alle varie categorie manga dell admin
 			reindirizzaPage(request, response);
+			System.out.println("sono in admin" + request.getParameter("buttonId"));
+			if(request.getParameter("buttonId")!=null) {
+				doPost(request, response);
+				return;
+			}
 		
 
 		
@@ -71,6 +76,7 @@ public class Admin2Servlet extends HttpServlet {
 		//manda alla pagina dettaglio del manga amministratore
 		if(request.getParameter("buttonId")!=null) {
 			MangaDettaglio(request,response);
+			return;
 			
 		}
 		
@@ -78,6 +84,32 @@ public class Admin2Servlet extends HttpServlet {
 		if(request.getParameter("titolo")!=null) {
 			AggiornamentoManga(request,response);
 			
+		}
+		
+		if(request.getParameter("inputConferma")!=null) {
+			Integer IdManga =Integer.parseInt(request.getParameter("inputConferma"));
+			HttpSession sessione=request.getSession();
+			List<MangaBean> lista=(List<MangaBean>) sessione.getAttribute("lista");
+			if(IdManga!=null) {
+				mangamanager.deleteManager(IdManga, new MangaBean());
+				
+				if(lista.size()>0) {
+					List<ImmaginiMangaBean> immagini=(List<ImmaginiMangaBean>) sessione.getAttribute("immagini");
+					MangaBean mangaEliminare = null;
+					for(MangaBean manga: lista) {
+						if(manga.getId()==IdManga) {
+							mangaEliminare=manga;
+						}
+					}
+					if(mangaEliminare!=null) {
+						lista.remove(mangaEliminare);
+					}
+				}
+				
+			}
+			sessione.setAttribute("lista", lista);
+			response.sendRedirect("AdminListaManga.jsp");
+ 
 		}
 		
 			
@@ -88,6 +120,7 @@ public class Admin2Servlet extends HttpServlet {
 	
 	/*******************************************************METODI***********************************************************/
 	private void AggiornamentoManga(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession sessione=request.getSession();
 		int idManga= Integer.parseInt(request.getParameter("idManga"));
 		try {
 			if(AggiornaManga(request,idManga)) {
@@ -95,11 +128,12 @@ public class Admin2Servlet extends HttpServlet {
 				MangaBean mangaUpdate= generalmanager.retriveById(new MangaBean(), idManga);
 				ImmaginiMangaBean imgUpdate= generalmanager.retriveById(new ImmaginiMangaBean(), mangaUpdate.getImmagini_manga());
 			
-				request.setAttribute("immagini", imgUpdate);
-				request.setAttribute("manga", mangaUpdate);
-				request.setAttribute("errore", 0);
-				RequestDispatcher dispatcher = request.getRequestDispatcher("AdminMangaDettaglio.jsp");
-				dispatcher.forward(request, response);
+				sessione.setAttribute("immagini", imgUpdate);
+				sessione.setAttribute("manga", mangaUpdate);
+				
+				response.sendRedirect("AdminMangaDettaglio.jsp?errore=0");
+				
+				
 			}else {
 				MangaBean mangaUpdate= generalmanager.retriveById(new MangaBean(), idManga);
 				ImmaginiMangaBean imgUpdate= generalmanager.retriveById(new ImmaginiMangaBean(), mangaUpdate.getImmagini_manga());
@@ -121,16 +155,18 @@ public class Admin2Servlet extends HttpServlet {
 		MangaBean mangaDB = generalmanager.retriveById(new MangaBean(), id);
 		ImmaginiMangaBean imgDB= generalmanager.retriveById(new ImmaginiMangaBean(), mangaDB.getImmagini_manga());
 		
-		request.setAttribute("immagini", imgDB);
-		request.setAttribute("manga", mangaDB);
+		HttpSession sessione=request.getSession();
+		sessione.setAttribute("immagini", imgDB);
+		sessione.setAttribute("manga", mangaDB);
 		
-	    RequestDispatcher dispatcher = request.getRequestDispatcher("AdminMangaDettaglio.jsp");
-	    try {
-			dispatcher.forward(request, response);
-		} catch (ServletException | IOException e) {
+		try {
+			response.sendRedirect("AdminMangaDettaglio.jsp");
+			return;
+		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	    
 	}
 	
 	//converti le immagini prese dalla request in byte
@@ -160,6 +196,7 @@ public class Admin2Servlet extends HttpServlet {
 	}
 	//ritorna l'id del manga se inserito correttamente altrimenti null
 	private boolean AggiornaManga(HttpServletRequest request, int id) throws IOException, ServletException {
+		HttpSession sessione=request.getSession();
 		byte[] immaginePersonaggio= ConvertiImmagine(request,"immaginePersonaggioInput");
 		byte[] immagineCover= ConvertiImmagine(request,"immagineCoverInput");
 		byte[] immagineTitolo= ConvertiImmagine(request,"immagineTitoloInput");
@@ -217,12 +254,12 @@ public class Admin2Servlet extends HttpServlet {
 			manga1.setId(id);
 			generalmanager.updateManager(manga1);
 			
-			request.setAttribute("immagini", img1);
-			request.setAttribute("manga", manga1);
+			sessione.setAttribute("immagini", img1);
+			sessione.setAttribute("manga", manga1);
 			return true;
 		}else { 
-			request.setAttribute("immagini", imgDB);
-			request.setAttribute("manga", mangaDB);
+			sessione.setAttribute("immagini", imgDB);
+			sessione.setAttribute("manga", mangaDB);
 			return false;
 		}
 		

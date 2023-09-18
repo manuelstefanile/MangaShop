@@ -84,32 +84,7 @@ public class PagineMangaServlet extends HttpServlet {
 	
 	/*******************************************************METODI***********************************************************/
  
-	
-	//converti le immagini prese dalla request in byte
-	private byte[] ConvertiImmagine(HttpServletRequest request,String immagine) throws IOException, ServletException {
-		Part imgPersonaggio = request.getPart(immagine);
-		
-		InputStream oo = imgPersonaggio.getInputStream();
-		
-		ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-		
-		int nRead;
-		byte[] data = new byte[221024];
 
-		
-		while ((nRead = oo.read(data, 0, data.length)) != -1) {
-		    buffer.write(data, 0, nRead);
-		}
-		
-		buffer.flush();
-		
-		byte[] imageData = buffer.toByteArray();
-		
-		oo.close();
-		buffer.close();
-		return imageData;
-		
-	}
  
 
 	
@@ -119,7 +94,14 @@ public class PagineMangaServlet extends HttpServlet {
 		if(tipo!=null) {
 			 HttpSession sessione = request.getSession();
 			 //id della categoria
-			 int id=Integer.parseInt(request.getParameter("id"));
+			 Object id=null;
+			 try {
+				 id=Integer.parseInt(request.getParameter("id"));
+			} catch (Exception e) {
+				id=(String)request.getParameter("id");
+			}
+			 
+			 
 			 List<MangaBean> listaManga=null;
 			 List<ImmaginiMangaBean> immaginiManga=new ArrayList<ImmaginiMangaBean>();
 			 
@@ -133,6 +115,20 @@ public class PagineMangaServlet extends HttpServlet {
 				 }
 				 
 				sessione.setAttribute("titolo","Tutti i manga" );
+				//se tipo è uguale ad una di queste macro categorie, in base all'id restituisci la lista manga satta
+			}else if(tipo.equals("novita")) {
+				
+				listaManga= mangamanager.retriveMangaNovita();
+				 
+				 
+				 for(MangaBean manga: listaManga) {
+					 ImmaginiMangaBean img=generalmanager.retriveById(new ImmaginiMangaBean(), manga.getImmagini_manga());
+					 immaginiManga.add(img);
+				 }
+				 
+				 
+				 sessione.setAttribute("titolo","Novità della settimana" );
+				 sessione.setAttribute("descrizione","Questi sono i manga usciti nell'ultima settimana." );
 				//se tipo è uguale ad una di queste macro categorie, in base all'id restituisci la lista manga satta
 			} else if(tipo.equals("autore")) {
 				AutoreBean ACE =(AutoreBean)generalmanager.retriveById(new AutoreBean(), id);
@@ -150,7 +146,7 @@ public class PagineMangaServlet extends HttpServlet {
 					 ImmaginiMangaBean img=generalmanager.retriveById(new ImmaginiMangaBean(), manga.getImmagini_manga());
 					 immaginiManga.add(img);
 				 }
-				 if(id==0) {
+				 if((Integer)id==0) {
 					 sessione.setAttribute("titolo","Manga non Disponibili" );
 				 }else	
 					 sessione.setAttribute("titolo","Manga Disponibili" );
@@ -166,6 +162,13 @@ public class PagineMangaServlet extends HttpServlet {
 
 			} else if(tipo.equals("categoria")) {
 				System.out.println("categoria");
+				//vuol dire che ho solo il nome della categoria. allora recupero l'id
+				
+				if(id instanceof String) {
+					CategoriaBean cat= generalmanager.retriveByCampoManager(new CategoriaBean(), "nome", id).get(0);
+					id=(Integer)cat.getId();
+				}
+			
 				CategoriaBean ACE =generalmanager.retriveById(new CategoriaBean(), id);
 				listaManga= generalmanager.retriveByCampoManager(new MangaBean(),tipo, id);
 				 for(MangaBean manga: listaManga) {

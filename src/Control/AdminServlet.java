@@ -170,6 +170,10 @@ public class AdminServlet extends HttpServlet {
 		byte[] immaginePersonaggio= ConvertiImmagine(request,"immaginePersonaggioInput");
 		byte[] immagineCover= ConvertiImmagine(request,"immagineCoverInput");
 		byte[] immagineTitolo= ConvertiImmagine(request,"immagineTitoloInput");
+		//setta l immagine di default
+		if(immagineCover.length==0) {
+			immagineCover=mangamanager.retriveById(new ImmaginiMangaBean(), 0).getCover();
+		}
 		ImmaginiMangaBean immagini=new ImmaginiMangaBean(immagineCover, immagineTitolo, immaginePersonaggio);
 
 		String titolo=request.getParameter("titolo");
@@ -194,6 +198,7 @@ public class AdminServlet extends HttpServlet {
 		Integer idImmagini= mangamanager.insertImageMangaManager(immagini);
 
 		MangaBean manga=new MangaBean(titolo,quantita,prezzo,disponibilita,idCategorie[0],idCategorie[1],idCategorie[2],rilegatura,data_uscita,descrizione,idImmagini);
+		System.out.println(manga);
 		return generalmanager.insertManager(manga);
 
 		
@@ -208,15 +213,15 @@ public class AdminServlet extends HttpServlet {
 		int nRead;
 		byte[] data = new byte[221024];
 
-		System.out.println("dimensione data img +"+ data.length);
+		
 		while ((nRead = oo.read(data, 0, data.length)) != -1) {
 		    buffer.write(data, 0, nRead);
 		}
-		System.out.println(buffer.size());
+		
 		buffer.flush();
-		System.out.println(buffer.size());
+		
 		byte[] imageData = buffer.toByteArray();
-		System.out.println("dimensione img +"+ imageData.length);
+		
 		oo.close();
 		buffer.close();
 		return imageData;

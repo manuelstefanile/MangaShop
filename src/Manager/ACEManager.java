@@ -10,7 +10,8 @@ import Dao.GeneralDao;
 
 public class ACEManager {
 	private GeneralManager<GeneralDao> generalmanager=new GeneralManager<GeneralDao>();
-
+	
+/*controlla se il nome e (eventualmente)cognome sono uguali */
 public  boolean CheckACE(InterfaceACE oggetto,String nome,String cognomeAutore) {
  
 	

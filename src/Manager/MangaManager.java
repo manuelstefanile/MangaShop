@@ -37,6 +37,8 @@ public class MangaManager extends GeneralManager<UtenteDao>{
 				
 				for (AutoreBean autore: listaautori) {
 					String nome_cognome= autore.getNome() +" "+ autore.getCognome();
+					System.out.println("string au = "+ au);
+					System.out.println("string nome cohnome = "+ nome_cognome);
 					
 					if(nome_cognome.equals(au)) {
 						
@@ -154,4 +156,14 @@ public class MangaManager extends GeneralManager<UtenteDao>{
 		return mangadao.RetriveMangaLimit(limite,idCategoria);
 		
 	}
+	//ritorna i manga dell'ultima settimana
+	public List<MangaBean> retriveMangaNovita() {
+		return mangadao.RetriveMangaNovitaSettimana();
+		
+	}
+	
+	public List<MangaBean> RetriveMangaParole(String parola){
+		return mangadao.RetriveMangParola(parola);
+	}
 }
+

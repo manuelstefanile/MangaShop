@@ -18,6 +18,8 @@ import Beans.ImmaginiMangaBean;
 import Beans.CategoriaBean;
 import Beans.MangaBean;
 import Beans.Manga_Img;
+import Beans.Profilo;
+import Beans.UtenteBean;
 import Manager.GeneralManager;
 import Manager.MangaManager;
 
@@ -38,34 +40,41 @@ public class HomeServlet extends HttpServlet {
 	@Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		List<MangaBean> lista1=mangamanager.retriveMangaLimit(4, 19);
-		List<MangaBean> lista2=mangamanager.retriveMangaLimit(4, 20);
-		List<MangaBean> lista3=mangamanager.retriveMangaLimit(4, 21);
-		
-		List<Manga_Img> lista1Compl1=new ArrayList<Manga_Img>();
-		List<Manga_Img> lista1Compl2=new ArrayList<Manga_Img>();
-		List<Manga_Img> lista1Compl3=new ArrayList<Manga_Img>();
-		
-		addManga_img(lista1,lista1Compl1);
-		addManga_img(lista2,lista1Compl2);
-		addManga_img(lista3,lista1Compl3);
-		
-		String nomeCategoria1=mangamanager.retriveById(new CategoriaBean(), 19).getNome();
-		String nomeCategoria2=mangamanager.retriveById(new CategoriaBean(), 20).getNome();
-		String nomeCategoria3=mangamanager.retriveById(new CategoriaBean(), 21).getNome();
-		
-		Map<String,List<Manga_Img>> mappalista = new HashMap<String, List<Manga_Img>>();
-		
-		mappalista.put(nomeCategoria1, lista1Compl1);
-		mappalista.put(nomeCategoria2, lista1Compl2);
-		mappalista.put(nomeCategoria3,lista1Compl3);
 		HttpSession sessione= request.getSession();
-		sessione.setAttribute("mappalista", mappalista);
-		List<CategoriaBean> categorie = generalmanager.retriveAllManager(new CategoriaBean());
+		Profilo profilo = (Profilo) sessione.getAttribute("Profilo");
+		if(profilo instanceof UtenteBean || profilo == null) {
+			//setta listaCategorie , restituendo i manga e le loro img
+			//in questo caso , prendo quelli della catecoria con id 19,20,21
+			List<MangaBean> lista1=mangamanager.retriveMangaLimit(4, 19);
+			List<MangaBean> lista2=mangamanager.retriveMangaLimit(4, 20);
+			List<MangaBean> lista3=mangamanager.retriveMangaLimit(4, 21);
+			
+			List<Manga_Img> lista1Compl1=new ArrayList<Manga_Img>();
+			List<Manga_Img> lista1Compl2=new ArrayList<Manga_Img>();
+			List<Manga_Img> lista1Compl3=new ArrayList<Manga_Img>();
+			
+			addManga_img(lista1,lista1Compl1);
+			addManga_img(lista2,lista1Compl2);
+			addManga_img(lista3,lista1Compl3);
+			
+			String nomeCategoria1=mangamanager.retriveById(new CategoriaBean(), 19).getNome();
+			String nomeCategoria2=mangamanager.retriveById(new CategoriaBean(), 20).getNome();
+			String nomeCategoria3=mangamanager.retriveById(new CategoriaBean(), 21).getNome();
+			
+			Map<String,List<Manga_Img>> mappalista = new HashMap<String, List<Manga_Img>>();
+			
+			mappalista.put(nomeCategoria1, lista1Compl1);
+			mappalista.put(nomeCategoria2, lista1Compl2);
+			mappalista.put(nomeCategoria3,lista1Compl3);
+			
+			sessione.setAttribute("mappalista", mappalista);
+			List<CategoriaBean> categorie = generalmanager.retriveAllManager(new CategoriaBean());
+			
+			sessione.setAttribute("listaCategorie", categorie);
+			response.sendRedirect("Home.jsp");
+			
+		}else response.sendRedirect("AdminHome.jsp");
 		
-		sessione.setAttribute("listaCategorie", categorie);
-		response.sendRedirect("Home.jsp");
 		
 		
 
@@ -73,7 +82,7 @@ public class HomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+    	
     }
     
     /*creo una struttura dati con manga e immagini*/

@@ -41,7 +41,8 @@
 <%  Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
 	
 	if(!(utente instanceof AmministratoreBean)){
-		response.sendRedirect("ErorrAutorizzazione.jsp");
+		response.sendRedirect("ErroreServlet?errore=AdminHome");
+		return;
 	}
 	List<CategoriaBean> categorie=(List<CategoriaBean>)session.getAttribute("listaCategorie");
 	List<EditoreBean> editori=(List<EditoreBean>)session.getAttribute("listaEditori");

@@ -2,25 +2,27 @@ package Beans;
 
 public class CarrelloBean extends General {
 	private int id;
-	private int utente;
-	private int manga;
+	private String utente;
+	private Integer manga;
 	private int quantita;
-	private boolean wishilist; 
 	
 	
-	public CarrelloBean(int id, int utente, int manga, int quantita, boolean wishilist) {
+	public CarrelloBean() {
+		super.setNomeTabella("Carrello");
+	}
+	
+	public CarrelloBean(String utente, Integer manga, int quantita) {
 		super();
-		this.id = id;
+		
 		this.utente = utente;
 		this.manga = manga;
 		this.quantita = quantita;
-		this.wishilist = wishilist;
+		
 		super.setNomeTabella("Carrello");
 	}
 	@Override
 	public String toString() {
-		return "Carrello [id=" + id + ", utente=" + utente + ", manga=" + manga + ", quantita=" + quantita
-				+ ", wishilist=" + wishilist + "]";
+		return "Carrello [id=" + id + ", utente=" + utente + ", manga=" + manga + ", quantita=" + quantita;
 	}
 	public int getId() {
 		return id;
@@ -28,16 +30,16 @@ public class CarrelloBean extends General {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getUtente() {
+	public String getUtente() {
 		return utente;
 	}
-	public void setUtente(int utente) {
+	public void setUtente(String utente) {
 		this.utente = utente;
 	}
-	public int getManga() {
+	public Integer getManga() {
 		return manga;
 	}
-	public void setManga(int manga) {
+	public void setManga(Integer manga) {
 		this.manga = manga;
 	}
 	public int getQuantita() {
@@ -46,12 +48,7 @@ public class CarrelloBean extends General {
 	public void setQuantita(int quantita) {
 		this.quantita = quantita;
 	}
-	public boolean isWishilist() {
-		return wishilist;
-	}
-	public void setWishilist(boolean wishilist) {
-		this.wishilist = wishilist;
-	}
+
 	
 	
 }

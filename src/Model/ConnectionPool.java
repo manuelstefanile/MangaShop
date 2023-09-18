@@ -55,9 +55,10 @@ public final class ConnectionPool {
 
 
                 // non serve  Class.forName("com.mysql.jdbc.Driver");
-                String url = "jdbc:mysql://localhost:3306/" + db;
+                String url = "jdbc:mysql://localhost:3306/" + db+"?useUnicode=yes&characterEncoding=UTF-8";
+                
                 Connection con = DriverManager.getConnection(url, user, pwd);
-
+                
                 con.setAutoCommit(false);
                 
                 return con;

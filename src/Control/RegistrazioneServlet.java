@@ -10,9 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Beans.AmministratoreBean;
+import Beans.CarrelloBean;
 import Beans.UtenteBean;
+import Beans.WishlistBean;
 import Manager.AmministratoreManager;
 import Manager.UtenteManager;
 
@@ -35,11 +38,17 @@ public class RegistrazioneServlet extends HttpServlet {
 	}
  
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//se non ci sono dublicati con l'email 
-		if(utentemanager.insertUtente(Utente(request))) {
+		//se non ci sono dublicati con l'email allora registra l utente 
+		UtenteBean utente = Utente(request);
+		if(utentemanager.insertUtente(utente)) {
+			HttpSession sessione=request.getSession();
+			//crea anche un carrello e wishlist associato al cliente.
+			//utentemanager.insertManager(new CarrelloBean(utente.getEmail(),null,0));
+			//utentemanager.insertManager(new WishlistBean(utente.getEmail(),null,0));
+        	sessione.setAttribute("Profilo", utente);
 		    
 		    
-		    response.sendRedirect(request.getContextPath() + "/Registrazione.jsp");
+		    response.sendRedirect(request.getContextPath() + "/Home.jsp?errore=0");
 		    return;
 		} else {
 		    

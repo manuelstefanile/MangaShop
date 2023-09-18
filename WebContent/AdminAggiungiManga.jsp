@@ -8,16 +8,9 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
-
-  
+<title>Aggiungi Manga</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  
-  
-  
-  
-  
-  
+
   <link rel="stylesheet" href="CSS/Bottone.css">
   <link rel="stylesheet" href="CSS/Button-81.css">
   
@@ -40,7 +33,8 @@ display:none;
 <%  Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
 	
 	if(!(utente instanceof AmministratoreBean)){
-		response.sendRedirect("ErorrAutorizzazione.jsp");
+		response.sendRedirect("ErroreServlet?errore=AdminAggiungi");
+		return;
 	}
 	String errore= request.getParameter("errore");
     %>
@@ -77,7 +71,7 @@ display:none;
             </div>
             
             <form id="formcontenitore" name="Form_Registrazione_Manga" 
-            	enctype="multipart/form-data" method="post" action="AdminServlet">
+            	enctype="multipart/form-data" accept-charset="UTF-8"  method="post" action="AdminServlet">
             
         	<input id="immagineCoverInput" accept="image/*" type="file" name="immagineCoverInput">
         	<input id="immaginePersonaggioInput" accept="image/*" type="file" name="immaginePersonaggioInput">
@@ -90,12 +84,12 @@ display:none;
               </div>
              
               <div class="inputcontenitore">
-                <label for="data_uscita">  Data di uscita </i></label>
+                <label for="data_uscita">  Data di uscita</label>
                 <input type="date" id="data_uscita" required name="data_uscita" >
               </div>  
               <div class="inputcontenitore widthDivPiccoli">
                 <label for="quantita"> Quantita</label>
-                <input min="0" step="1" required type="number"  oninput="checkInputValue(this)" placeholder="ex. 1,2,3" id="quantita" name="quantita" >
+                <input  required type="text"  placeholder="ex. 1,2,3" id="quantita" name="quantita" >
               </div>
               <div class="inputcontenitore widthDivPiccoli">
                 <label for="prezzo">  prezzo</label>
@@ -131,12 +125,12 @@ display:none;
                   </select>
                 </div>  
                 <div class="inputcontenitore">
-                  <label for="rilegatura">  Rilegatura </i></label>
-                  <input type="text" placeholder="ex. Brossurato" id="rilegatura" name="rilegatura" >
+                  <label for="rilegatura">Rilegatura</label>
+                  <input type="text" maxlength="30" placeholder="ex. Brossurato" id="rilegatura" name="rilegatura" >
                 </div>  
 
                 <div class="inputcontenitore">
-                  <label for="descrizione" > Descrizione</i></label>
+                  <label for="descrizione" > Descrizione</label>
                   <textarea maxlength="255" id="descrizione" name="descrizione"></textarea>
                 </div>  
                 <div id="aggiungiImmagini"  onclick="modalGenerale('Carta','Immagini')" onmouseover="effettoImmagini()" onmouseleave="effettoImmaginiReverse()" >
@@ -155,11 +149,11 @@ display:none;
 <%@include file="Modale.html" %>
 <script src="JS/AdminAggiungiManga.js"></script>
 <script src="JS/AnnullaInputImage.js"></script>
+<script src="JS/ControlliMangaAdmin.js"></script>
 <script>
-if (performance.navigation.type === 1) {
-    // Reload the page only when the user manually refreshes the page
-    window.location.href = window.location.pathname;
-}
+$("descrizione").on("blur", function(){
+	console.log(this.value);
+})
 
 </script>
 

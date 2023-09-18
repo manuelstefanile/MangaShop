@@ -41,6 +41,8 @@ public class GeneralServlet extends HttpServlet {
     }
 
 	 
+    //manda l utente alla pagina ACE scelta, dato che è dinamica , modificandola a seconda della scelta
+    //manda anche al Profilo
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		System.out.println("sono in general");

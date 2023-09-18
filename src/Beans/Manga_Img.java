@@ -1,7 +1,7 @@
 package Beans;
 
 import java.util.Arrays;
-
+/*classe che contiene i dati essenziali come nome... e img*/
 public class Manga_Img {
 	private int id;
 	private String nome;

@@ -73,11 +73,12 @@ public class ProfiloServlet extends HttpServlet {
 		HttpSession sessione= request.getSession();
 		UtenteBean utente= (UtenteBean)sessione.getAttribute("Profilo");
 		
-		//richiedo ajax le carte e gli indirizzi
+		//richiedo ajax le carte di credito e gli indirizzi per mostrarle all'utente
 		if(request.getParameter("RichiestaCarteIndirizzi")!=null) {
 			RichiestaIndirizziCarta(request,response,utente);
 		}
 
+		//aggiorna il profilo dell'utente
 		if(request.getParameter("email")!=null) {
 			/*ricevi i dati dal form profilo. */
 			String nome=request.getParameter("nome");
@@ -93,6 +94,7 @@ public class ProfiloServlet extends HttpServlet {
 			response.sendRedirect("Profilo.jsp?errore=1");
 		}
 
+		//ajax, inserisce un nuovo indirizzo o una nuova carta di credito
 		if(request.getParameter("tipologia")!=null) {
 			richiestaInserimento(request, response,sessione,utente);
 		}
@@ -113,7 +115,7 @@ public class ProfiloServlet extends HttpServlet {
 		List<EditoreBean> editori=null;
 		
 		
-		//non retrive all ma dell utente
+		//non retrive all, ma dell utente
 		
 		carte = generalmanager.retriveByCampoManager(new CartaCreditoBean(), "utente" ,utente.getEmail() );
 		indirizzi = generalmanager.retriveByCampoManager(new IndirizzoBean(), "utente" ,utente.getEmail() );
@@ -153,6 +155,7 @@ public class ProfiloServlet extends HttpServlet {
 		
 			List<IndirizzoBean> indirizzi= generalmanager.retriveAllManager(new IndirizzoBean());
 			for (IndirizzoBean in: indirizzi) {
+				//sta inserendo un indirizzo già esistente
 				if(cap==in.getCap() && regione.equals(in.getRegione()) 
 						&&	provincia.equals(in.getProvincia()) && citta.equals(in.getCitta())
 						&&  via.equals(in.getVia()))
@@ -178,6 +181,7 @@ public class ProfiloServlet extends HttpServlet {
 	
 			List<CartaCreditoBean> carte= generalmanager.retriveAllManager(new CartaCreditoBean());
 			for (CartaCreditoBean car: carte) {
+				//sta inserendo una carta già esistente
 				if(codice.equals(car.getCodice()))
 					{
 					return;
