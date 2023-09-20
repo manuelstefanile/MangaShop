@@ -135,8 +135,8 @@ public class AcquistoServlet extends HttpServlet {
 			
 			OrdineBean ordineUtente=new OrdineBean() ;
 			Integer idOrdine= carrellomanager.insertManager(ordineUtente);
-			System.out.println(idOrdine);
-			System.out.println(nome + " " +cognome+ " " +email+ " " +telefono+ " " +regione+ " " +provincia+ " " +citta+ " " +indirizzo+ " " +cap+ " " +numeroCarta+ " " +meseCarta+ " " +cvc);
+			
+
 			
 			float totale=0f;
 			
@@ -150,9 +150,7 @@ public class AcquistoServlet extends HttpServlet {
 				carrellomanager.deleteManager(car.getId(), car);
 			}
 			
-			System.out.println(carrello);
-			System.out.println(totale);
-			System.out.println(idOrdine);
+
 			String indirizzoStringa="Regione " + regione + ". Provincia "+ provincia + ". Citta " + citta + ". Indirizzo " + indirizzo + ". Cap " + cap;
 			String cartaStringa = "Numero carta " + numeroCarta + ". Nome proprietario " + nomeCarta + ". CVC " + cvc + ". Mese scadenza " + meseCarta;
 			ordineUtente=new OrdineBean("in consegna", Date.valueOf(LocalDate.now()) , totale, carrello.size(),indirizzoStringa, cartaStringa,nome,cognome,telefono,utente.getEmail());

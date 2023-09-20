@@ -132,9 +132,15 @@ public class ErroreServlet extends HttpServlet {
 			sessione.setAttribute("erroreDescrizioneError", "Questo manga non è più presente nel database");			
 			response.sendRedirect("Errore.jsp?errore=MangaNonPresente");
 			return;
+		}else if(errore.equals("General")) {
+
+			sessione.setAttribute("erroreDescrizioneError", "Pagina non disponibile. Vai alla home.");			
+			response.sendRedirect("Errore.jsp?errore=Generale");
+			return;
 		} 
 	}else {
 		int erroreStato=response.getStatus();
+		
 		if (erroreStato==404) {
 			sessione.setAttribute("erroreDescrizioneError", "404 Pagina non trovata");			
 			response.sendRedirect("Errore.jsp?errore=404");
@@ -145,6 +151,7 @@ public class ErroreServlet extends HttpServlet {
 			return;
 		}
 	}
+	System.out.println(response.getStatus());
 	
 		
 		
