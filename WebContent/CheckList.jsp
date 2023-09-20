@@ -17,7 +17,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Carrello</title>
+  <title>CheckList</title>
   
   
   <link rel="stylesheet" href="CSS/Bottone.css">
@@ -92,8 +92,8 @@
       			arrayDiStringhe[2]=indirizzo.getRegione();
       			arrayDiStringhe[3]=indirizzo.getVia();
       			
-      			System.out.println(indirizzo);
-      			out.print("<option value=" + arrayDiStringhe[0] +","+ arrayDiStringhe[1]+","+ arrayDiStringhe[2]+","+ arrayDiStringhe[3]+","+ cap+">"+indirizzo.getCitta()+"</option>");
+      			
+      			out.print("<option value='"+ arrayDiStringhe[0] +","+ arrayDiStringhe[1]+","+ arrayDiStringhe[2]+","+ arrayDiStringhe[3]+","+ cap+"'>"+indirizzo.getVia()+"</option>");
       		} %>
       	</select>
         <div class="form__group field">
@@ -143,7 +143,7 @@
       		<%for(CartaCreditoBean carta:listaCarteCredito){
  
       			
-      			out.print("<option value=" + carta.getCodice() +","+ carta.getCvc()+","+ carta.getNome()+","+ carta.getData_scadenza()+">"+carta.getCodice()+"</option>");
+      			out.print("<option value='" + carta.getCodice() +","+ carta.getCvc()+","+ carta.getNome()+","+ carta.getData_scadenza()+"'>"+carta.getCodice()+"</option>");
       		} %>
       	</select>
     </p>

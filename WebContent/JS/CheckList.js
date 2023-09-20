@@ -1,4 +1,25 @@
-/***************************************CONTROLLI********************************/
+ 	
+
+
+function spostaElemento() {
+    
+    let footer= document.getElementById('footer');
+    if(footer!=null) {
+    var larghezzaSchermo = window.innerWidth;
+    if (larghezzaSchermo < 850) { // esempio di soglia di larghezza
+    	footer.style.marginTop="135px";
+    } else {
+    	footer.style.marginTop="35px";
+    }
+   }
+}
+
+
+
+// Aggiungere un ascoltatore di eventi resize alla finestra del browser
+window.addEventListener('resize', spostaElemento);
+
+
 $("#name").on("input", function (){
 	if(this.value.length>0){
 		this.setCustomValidity("");
@@ -101,7 +122,7 @@ $("#indirizzo").on("input", function (){
 		}
 });
 
-/****************************************CONTROLLICARTA*******************************************/
+
 $("#numeroCarta").on("input", function (){
 	// 
     var codiceValue = this.value.trim();
@@ -189,6 +210,7 @@ function selezionaOpzione(){
 	citta.value=valuesArray[0];
 	indirizzo.value=valuesArray[3];
 	cap.value=valuesArray[4];
+	console.log("2 "+ valuesArray[2] + " 1 "+ valuesArray[1] + " 0 " + valuesArray[2] + " 3" + valuesArray[3] +" 4" + valuesArray[4] );
     
 }
 
@@ -196,13 +218,16 @@ function selezionaOpzioneCarte(){
 	var valoreOpzione = document.getElementById("Carte").value;
 	
 	var valuesArray = valoreOpzione.split(',');
-	console.log(valuesArray[1]);
+	
 
 	var numero = document.getElementById("numeroCarta");
 	var nome = document.getElementById("nomeCarta");
 	var cvc = document.getElementById("cvc");
-	console.log(cvc);
+	
 	var data= document.getElementById("meseCarta");
+	
+	console.log(" data = "+data);
+	console.log(" data arr = "+ valuesArray[3]);
 	
 	
 	numero.value=valuesArray[0];

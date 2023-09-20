@@ -12,7 +12,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Admin Dettaglio manga</title>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

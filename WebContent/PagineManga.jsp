@@ -16,7 +16,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Lista manga</title>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -36,6 +36,12 @@
 <body>
 <%
 Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
+if(utente instanceof AmministratoreBean){
+
+	response.sendRedirect("ErroreServlet?errore=PagineManga");
+	return;
+
+}
 List<ImmaginiMangaBean> immaginiManga=null;
 String titolo =null;
 String descrizione =null;
@@ -52,12 +58,11 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
         //Object attributeValue = session.getAttribute(attributeName);
         System.out.println("nome = " + attributeName );
     }
-	if(utente instanceof AmministratoreBean){
-
-			response.sendRedirect("ErroreServlet?errore=PagineManga");
-			return;
-		
+	if(titolo==null){
+		response.sendRedirect("ErroreServlet?errore=General");
+		return;
 	}
+	
 
 %>
 <%@include file="Header.jsp" %>

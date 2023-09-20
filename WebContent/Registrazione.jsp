@@ -46,6 +46,7 @@ input:invalid + span {
 <body>
 
 <%@include file="Header.jsp" %>
+<div id="erroreDuplicate"></div>
 
 <%   
 	if(u!=null){
@@ -101,7 +102,9 @@ input:invalid + span {
                 </div>
 <%@include file="Footer.html" %>   
  <script src="JS/ControlliUtente.js"> </script>
+ <script src="JS/Registrazione.js"> </script>
 <script type="text/javascript">
+
 if (performance.navigation.type === 1) {
     // Reload the page only when the user manually refreshes the page
     window.location.href = window.location.pathname;

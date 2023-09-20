@@ -95,6 +95,7 @@ if(u instanceof AmministratoreBean ){
 			}
 			
 			totale+=carrelloSingolo.getPrezzo()*quantita ;
+			
 		%>
 	<tr id="rigaCarrello<%=u!=null?idCarrello:carrelloSingolo.getId()%>">
 	<%     System.out.println("idCarrello = " + idCarrello + "carrellMangaPerNonUtenti = " + carrelloSingolo.getId()); %>
@@ -124,7 +125,7 @@ if(u instanceof AmministratoreBean ){
   </div>
   <div id="procediCarrello">
     <p> </p>
-    <p id="totaleCarrello"><%=totale%> &euro;</p>
+    <p id="totaleCarrello"><%=String.format("%.2f", totale)%> &euro;</p>
     <button class="button-acquista" onclick="ProseguiAcquisto()" role="button"><span class="text">Prosegui</span><span>CheckList</span></button>
   </div>
 </div>

@@ -247,7 +247,10 @@ request.setAttribute("errore", null);
  <script src="JS/AdminACE.js"></script>
  
  <script type="text/javascript">
- 
+ var userAgent = navigator.userAgent;
+ if (userAgent.indexOf("Firefox") !== -1) {
+	    $("#tableACE").css("text-align", "-moz-center");
+	} 
  if (performance.navigation.type === 1) {
 	    // Reload the page only when the user manually refreshes the page
 	    window.location.href = window.location.pathname;

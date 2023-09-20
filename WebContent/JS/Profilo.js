@@ -1,3 +1,5 @@
+
+
 var form = document.getElementById("formcontenitore");
   form.addEventListener("submit", function(event) {
 	  
@@ -64,7 +66,12 @@ function errorDuplicate(testo){
  //appena apri la pagina , avvia localDoc per inserire gli indirizzi e le carte dell utente
  loadDoc();
  function inputIndirizzoValid(){
-		return (cap&&indirizzo&&regione&&via&&provincia);
+	 console.log(cap);
+	 console.log(citta);
+	 console.log(regione);
+	 console.log(via);
+	 console.log(provincia);
+		return (cap&&citta&&regione&&via&&provincia);
 	}
  function inputCartaValid(){
 		return (codice&&data&&nomeTitolare&&cvc);
@@ -102,6 +109,7 @@ function errorDuplicate(testo){
 					    let option = document.createElement("option");
 						  option.innerHTML = citta + " "+ via;
 					      document.getElementById("indirizzi").appendChild(option); 
+					      Successo("Indirizzo inserito correttamente.");
 				    }},
 			      error: function(jqXHR, textStatus, errorThrown) {
 			    	    // Gestisci gli errori qui
@@ -137,6 +145,8 @@ function errorDuplicate(testo){
 					    let option = document.createElement("option");
 						  option.innerHTML = codice ;
 					      document.getElementById("carte").appendChild(option); 
+					      Successo("Carta inserita correttamente.");
+					      
 				    }},
 			      error: function(jqXHR, textStatus, errorThrown) {
 			    	    // Gestisci gli errori qui

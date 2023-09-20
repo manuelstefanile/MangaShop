@@ -74,6 +74,8 @@ html, body {
 	text-decoration: none;
 	color: white;
 	padding: 16px;
+	padding-top: 22px;
+    padding-bottom: 22px;
 }
 
 .flexbox>a:nth-child(2){
@@ -84,7 +86,7 @@ html, body {
 }
 /***************************LOGO****************************************/
 #logoContenitore{
-	
+	cursor:pointer;	
   position: absolute;
   padding-top: 20px;
 }

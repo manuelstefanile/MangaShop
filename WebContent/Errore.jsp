@@ -29,7 +29,7 @@
     left: 30%;
     right: 30%;
     position: fixed;
-    text-align: -webkit-center;
+    text-align: center;
     background-color: brown;
     border-radius: 20px;
  }

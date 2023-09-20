@@ -20,7 +20,8 @@
   }
   
   #OrdiniDiv{
-  
+  	width: 100vw;
+    height: 100vh;
     flex-basis: 100%;
     padding-left: 25%;
 	padding-right: 25%;
@@ -114,12 +115,10 @@
   }
 @media screen and (max-width: 800px){
   #OrdiniDiv{
-  
-    
     padding-left: 0%;
 	padding-right: 0%;
-    
   }
 
 }
+
   

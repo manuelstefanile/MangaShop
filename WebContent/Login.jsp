@@ -58,8 +58,8 @@
 
   <div id="login">
     <div id="videoLogin">
-           <video autoplay loop muted title="Video di Naruto">
-       		<source src="Video/naruto.mp4" type="video/mp4">
+      <video autoplay loop muted title="Video di Naruto">
+       	<source src="Video/naruto.mp4" type="video/mp4">
    		<track label="English" kind="captions" srclang="en" src="Video/naruto.mp4" default>
    		<track label="Deutsch" kind="captions" srclang="de" src="Video/naruto.mp4">
    		<track label="Español" kind="captions" srclang="es" src="Video/naruto.mp4">
@@ -75,7 +75,7 @@
           <input required type="email" id="email" name="email" >
         </div>
         <div class="inputLogin">
-          <label for="password"><i class="fa-sharp fa-solid fa-lock"></i> Password </i></label>
+          <label for="password"><i class="fa-sharp fa-solid fa-lock"></i> Password </label>
           <input required type="password" id="password" name="password" >
         </div>  
         <div class="contentBox">
@@ -88,7 +88,7 @@
         </div>
         
 <%@include file="Footer.html" %>   
- <script src="JS/ControlliUtente.js"> </script>
+ 
 <script type="text/javascript">
 if (performance.navigation.type === 1) {
     // Reload the page only when the user manually refreshes the page

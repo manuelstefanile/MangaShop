@@ -132,7 +132,7 @@ String errore= (String)request.getParameter("errore");
       <div class="prezzo">
         <p class="titoloManga" onclick="ReindirizzaDettaglio(<%=id%>)"><%=manga.getNome()%></p>
         <p class="prezzoManga"><%=manga.getPrezzo()%> &euro;</p>
-        <button class="button-acquista" onclick="AggiungiCarrello('<%=id %>',1)" role="button"><span class="text">Acquista</span><span>Carrello</span></button>
+        <button class="button-acquista" onclick="AggiungiCarrello('<%=id %>',1)" role="button"><span class="text">Acquista</span><span>Aggiungi Carrello</span></button>
       </div>
     </div>
     

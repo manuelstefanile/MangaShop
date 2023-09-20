@@ -17,7 +17,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Profilo</title>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -29,6 +29,7 @@
   <link rel="stylesheet" href="CSS/Modale.css">
 <link rel="stylesheet" href="CSS/Profilo.css">  
 <link rel="stylesheet" href="CSS/erroreOut.css">  
+  <script src="JS/Errore.js"></script>
   
   
 
@@ -60,7 +61,7 @@
 <%@include file="Header.jsp" %>
 
 
-    
+    <div id="erroreTipo"></div>
  <div id="erroreDuplicate"></div>
 
 
@@ -126,6 +127,8 @@
 <script src="JS/AnnullaInputCartaIndirizzo.js"></script>
 
 <script type="text/javascript">
+var  cap,citta,regione,via,provincia;
+
 	var nome="<%=utenteBean.getNome() %>";
 	var cognome="<%=utenteBean.getCognome()%>";
 </script>

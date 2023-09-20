@@ -16,7 +16,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Admin Lista manga</title>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -127,7 +127,7 @@ listaManga= (List<MangaBean>)session.getAttribute("lista");
       </figcaption>
       <div class="prezzo">
         <p class="titoloManga"><%=manga.getNome() %></p>
-        <p class="prezzoManga"><%=manga.getPrezzo() %></p>
+        <p class="prezzoManga"><%=manga.getPrezzo() %> &euro;</p>
         <form action="Admin2Servlet" method="post" >
         <button class="button-acquista" value="<%=manga.getId() %>" name="buttonId" type="submit" role="button"><span class="text">Modifica</span><span>Modifica</span></button>
         <button class="button-acquista" id="cestino" name="cestinoId" type="button" value="<%=manga.getId() %>" role="button"  

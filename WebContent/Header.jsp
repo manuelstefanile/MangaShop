@@ -67,7 +67,7 @@
     	
     	<div class="divNav">
     		<a class="carro" href="CarrelloServlet?carrello=true">Carrello</a>
-    		<% if(carrello!=null && carrello.size()!=0){ %>
+    		<% if(carrello!=null && carrello.size()>0){ %>
     		<div class="notifica"><%=carrello.size() %></div>
     		<% }%>
     		</div>
@@ -87,7 +87,10 @@
     
     
    
-    <div id="logoContenitore">
+    <div id="logoContenitore" 
+    	<%if(u instanceof AmministratoreBean){%>    onclick="VaiHome('Admin')"<%}else{ %>onclick="VaiHome('Utente')"<%} %>
+
+    >
       <p id="logoTitolo">MangaShop.it <div id="logoCerchio"> </div> </p>
       
     </div>
@@ -139,7 +142,7 @@
         		<a href="HomePage.jsp" id="oggNavRespons2" >Home</a>
         		<a href="CarrelloServlet?carrello=true" id="oggNavRespons5" >Carrello
         			<% if(carrello!=null && carrello.size()!=0){ %>
-    					<div style="left:130px; top: 343px;" class="notifica"><%=carrello.size() %></div>
+    					<div style="left:130px; top: 277px;" class="notifica"><%=carrello.size() %></div>
     				<% }%>
         			
         		</a>
@@ -175,7 +178,15 @@
  <script src="JS/Header.js"></script>
  <script src="JS/RedirectCategoria.js"></script>
   <script src="JS/DettaglioMangaReindirizza.js"></script>  
-<%@include file="JS/HeaderJs.jsp" %> 
+<%@include file="JS/HeaderJs.jsp" %>
+<script type="text/javascript">
+function VaiHome(luogoHome){
+	if(luogoHome=="Admin")
+		window.location.href = "AdminHome.jsp";
+	else
+		window.location.href = "Home.jsp";
+}
+</script> 
 </body>
 
 </html>

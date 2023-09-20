@@ -21,7 +21,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>Ordini</title>
 
   
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -76,15 +76,7 @@ LinkedHashMap<OrdineBean,List<ProdottoOrdineBean>> listaOrdini=(LinkedHashMap<Or
   </div>
 
 
-  <!---------------------------------------------ORDINA Anno ordine
-  <div id="ordinaOrdina">
-    <select id="ordina" name="ordina">
-      <option value="prezzo">2023</option>
-      <option value="data">2022</option>
-      <option value="popolarita">2021</option>
-    </select>
-  </div>
-     ORDINI-------------------->
+
 
   <div id="OrdiniDiv"> 
   <% for(Map.Entry<OrdineBean, List<ProdottoOrdineBean>> entry : listaOrdini.entrySet()){
@@ -163,7 +155,22 @@ LinkedHashMap<OrdineBean,List<ProdottoOrdineBean>> listaOrdini=(LinkedHashMap<Or
   
 </div>
 <%@include file="Footer.html" %>   
-   <script src="JS/DettaglioMangaReindirizza.js"></script>
+ <script src="JS/DettaglioMangaReindirizza.js"></script>
+ <script type="text/javascript">
+ document.addEventListener("DOMContentLoaded", function() {
+	  // Ottieni l'elemento con ID "pippo"
+	  var ordiniDiv = document.getElementById("OrdiniDiv");
+	console.log(ordiniDiv.children.length);
+	  // Verifica se ha figli
+    // Verifica se ha figli
+    if (ordiniDiv.children.length === 0) {
+    	ordiniDiv.style.height = "100vh";
+    } else {
+        // Imposta l'altezza a "100%" se ha figli
+        ordiniDiv.style.height = "100%";
+    }
+	});
+ </script>
    
 </body>
 </html>

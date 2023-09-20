@@ -15,10 +15,9 @@
   <link rel="stylesheet" href="CSS/Dettaglio.css">
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <style> 
-
-  
-
+ 
 </style>
+<title>Dettaglio Manga</title>
 </head>
 <body>
  <%  Profilo utente = (Profilo) request.getSession().getAttribute("Profilo");
@@ -113,7 +112,7 @@ if(utente instanceof AmministratoreBean){
         <img src="data:image/jpeg;base64,<%=Copertina %>"class="cover-image" />
       </div>
       <img onclick="ReindirizzaDettaglio(<%=id%>)" src="data:image/jpeg;base64,<%=Titolo %>"  class="title" />
-      <img onclick="ReindirizzaDettaglio(<%=id%>)" src="data:image/jpeg;base64,<%=Personaggio %>" class="character" />
+      <img onclick="ReindirizzaDettaglio(<%=id%>)" src="data:image/jpeg;base64,<%=PersonaggioManga %>" class="character" />
       
       <div class="prezzo">
         <p class="titoloManga" onclick="ReindirizzaDettaglio(<%=id%>)"><%=manga.getNome()%></p>

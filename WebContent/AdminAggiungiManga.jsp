@@ -8,7 +8,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Aggiungi Manga</title>
+<title>Admin aggiungi manga</title>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
   <link rel="stylesheet" href="CSS/Bottone.css">
@@ -131,7 +131,7 @@ display:none;
 
                 <div class="inputcontenitore">
                   <label for="descrizione" > Descrizione</label>
-                  <textarea maxlength="255" id="descrizione" name="descrizione"></textarea>
+                  <textarea maxlength="255" id="descrizione" required name="descrizione"></textarea>
                 </div>  
                 <div id="aggiungiImmagini"  onclick="modalGenerale('Carta','Immagini')" onmouseover="effettoImmagini()" onmouseleave="effettoImmaginiReverse()" >
                   <a id="testoBottone">Aggiungi Immagini</a>
