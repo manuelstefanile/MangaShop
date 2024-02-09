@@ -7,17 +7,17 @@ Di seguito verranno mostrate alcune gif del sito.
 # Home
 La home ed una pagina categoria.
 
-![homeEdetails](https://github.com/manuelstefanile/MangaShop/assets/114852292/b3fc69fa-c15e-476c-a8fe-a4b353b9d8a3)
+![homeEdetails](https://github.com/manuelstefanile/MangaShop/assets/114852292/f7a7291b-bf51-4587-9ea0-447346127217)
 
 # SearchBar
 Barra di ricerca, dove è possibile premere per andare nella pagina dettaglio del manga
 
-![search](https://github.com/manuelstefanile/MangaShop/assets/114852292/5032db60-8719-4e3a-bc02-c840f157727d)
+![search](https://github.com/manuelstefanile/MangaShop/assets/114852292/369c6490-4b58-493f-babd-1433e5e6e95d)
 
 # Pagina dettaglio
 Un esempio di pagina dettaglio di un manga
 
-![det](https://github.com/manuelstefanile/MangaShop/assets/114852292/a42f06aa-1e3e-484e-9b8e-4ddd056a7807)
+![det](https://github.com/manuelstefanile/MangaShop/assets/114852292/acb850d7-70f7-46ea-ac6e-290b33ce057f)
 
 
 
