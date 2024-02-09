@@ -1,0 +1,260 @@
+/*bottone*/
+.button-acquista{
+    margin-left: 0;
+    border-radius: 0;
+    width: 30%;
+    left: 13%;
+  }
+  .contentBottone{
+    position: relative;
+    bottom : 130px;
+  }
+
+#spedizione {
+    display: inline-block;
+    position: relative;
+    width: 80%;
+    left: 10%;
+    top: 10%;
+    
+}
+#headerCarrello{
+  padding-bottom: 5%;
+  position: relative;
+  width: 100%;
+  height: 20%;
+  color: white;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: center; /* allinea il contenuto orizzontalmente */
+align-items: center; /* allinea il contenuto verticalmente */    
+}
+
+#headerCarrello i{
+  padding-right: 1%;
+}
+#headerCarrello p{
+  display: inline-block;
+}
+#headerCarrello p:nth-child(4){
+  color: red;
+  
+}
+
+.separatoreHeaderCarrello{
+  width: 3px;
+  height: 33px;
+  position: relative;
+  background: aliceblue;
+  border-radius: 51px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+#grid-container {
+  display: grid;
+  gap: 10px;
+  background-color: whitesmoke;
+  padding: 10px;
+  width: 50%;
+}
+.grid-item {
+  
+  
+  padding: 20px;
+  font-size: 30px;
+}
+.item1 {
+  grid-column: 1 / span 2;
+  grid-row: 1;
+}
+
+/******************************INPUT**************/
+
+
+.form__group {
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  
+}
+
+.form__field {
+  
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid grey;
+  outline: 0;
+  font-size: 50%;
+  color: black;
+  padding: 7px 0;
+  background: transparent ;
+  transition: border-color 0.2s;
+}
+  .form__field::placeholder {
+    color: transparent;
+  }
+
+  .form__field:placeholder-shown ~ .form__label {
+    cursor: text;
+    top: 20px;
+  }
+  
+
+
+.form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 60%;
+  color: black;
+}
+
+.form__field:focus { 
+  
+  border-width: 2px;
+  border-image: linear-gradient(to right, darkred,grey);
+  border-image-slice: 1;
+}
+/******************************************************************************************/
+#contenitoreCarta{
+  width: 50%;
+    min-width: 412px;
+    max-width: 658px;
+    height: 251px;
+    /* min-height: 251px; */
+    position: relative;
+    bottom: 400px;
+    left: 50%;
+    font-size: 100%;
+}
+#cartaFronte{
+  background-color: skyblue;
+  border: 1px solid black;
+    position: absolute;
+    left: 15%;
+    /* top: 5%; */
+    width: 45%;
+    height: auto;
+    z-index: 1;
+    border-radius: 10px;
+    padding-left: 3%;
+    font-size: medium;
+}
+
+
+.item2 input{
+  width: 80%;
+}
+
+.item{
+  width: 100%;
+    height: 20%;
+    margin-bottom: 7%;
+    display: inline-block;
+}
+.item3{
+  width: 40%;
+}
+.item3 input{
+  width: 80%;
+}
+
+.item4{
+  width: 40%;
+}
+.item4 input {
+  width: 80%;
+}
+
+.item1 #Carte{
+  width: 20%;
+  margin-left: 10%;
+  position: absolute;
+  right: 5%;
+}
+
+/***********************************retro*********/
+
+#cartaRetro{
+  background-color: skyblue;
+  border: 1px solid black;
+    position: absolute;
+    left: 35%;
+    top: 24%;
+    width: 45%;
+    height: auto;
+    min-height: 70px;
+    padding-top: 138px;
+    padding-bottom: 11px;
+    z-index: 0;
+    border-radius: 10px;
+    font-size: medium;
+    
+}
+#rigaCarta{
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  top: 15%;
+  background-color: black;
+}
+#cvcCarta{
+  position: relative;
+  top: 60%;
+  width: 20%;
+  height: auto;
+  left: 70%;
+}
+#cvcCarta input {
+  width: 100%;
+}
+@media screen and (max-width: 851px){
+  #contenitoreCarta{bottom: 0px;
+  top: 138px;
+    left: 0;
+    width:99% ;
+    min-width: 315px;
+    height: 401px;
+}
+#cartaRetro{
+  min-height: 0;
+}
+#grid-container{
+  width: 100%;
+}
+
+
+  /*cognome*/
+  .grid-item:nth-child(2){
+    grid-column: 1 / span 2;
+    grid-row: 2;
+  }
+  /*email*/
+  .grid-item:nth-child(3){
+    grid-column: 1 / span 2;
+    grid-row: 3;
+  }
+
+  .button-acquista{
+    width: 64%;
+top: 70px;
+  }
+  .contentBottone{
+    bottom : 0;
+  }
+}
+@media screen and (max-width: 500px){
+	#cartaRetro{
+		width:60%;
+	}
+	#cartaFronte{
+		width:60%;
+	}
+
+	
+}
+#Indirizzi{
+	position: absolute;
+	bottom: 322px;
+}

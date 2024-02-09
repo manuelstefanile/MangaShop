@@ -1,0 +1,117 @@
+/**************************************modale************************/
+#modaleProfilo{
+	    text-align: center;
+	width: 100%;
+	position: fixed;
+	height: 100%;
+    top: 0;
+	display: none;
+  overflow: auto;
+      text-align: -webkit-center;
+  z-index: 4;
+}
+#modaleProfiloBody{
+
+    width: 66%;
+    max-width: 100%;
+    min-width: 215px;
+    min-height: 350px;
+    top: 10%;
+    position: relative;
+    background-color: whitesmoke;
+	
+}
+#modalHeader{
+	position: relative;
+	height: 55px;
+	width: 100%;
+	background-color: pink;
+}
+#modalHeader>p {
+	position: absolute;
+	
+	margin: 17px 0 0px 17px;
+}
+#modalHeader i{
+	position: absolute;
+	left: 95%;
+	margin-top: 17px;
+}
+.formModal {
+  justify-content: center;
+  margin-top: 7%;
+	display: flex;
+	flex-wrap: wrap ;
+  gap: 15px 35px;
+}
+.modaleInput{
+/*	margin-left: 10%;*/
+	flex-basis: 25%;
+}
+.modaleInput label{
+	display: block;
+}
+#cvc{
+	width: 40px;
+}
+#modalFooter{
+	
+	width: 100%;
+	
+	position: relative;
+	bottom: 0;
+	display: flex;
+	justify-content: center;
+  margin-top: 20px;
+}
+#modalFooter button{
+  padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+@media screen and (max-width: 710px) {
+  #modaleProfiloBody{
+    min-height: 400px;
+    
+    
+  }
+
+  
+}
+@media screen and (max-width: 865px) {
+  .modalInput{
+    margin-left: 0;
+
+  }
+  
+}
+
+#scuro {
+  z-index: 3;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    display: block;
+  }
+
+/*input style*/
+.modaleInput input{
+  border-bottom: solid;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    background: none;
+}
+
+
+.modaleBottoni .button-81:nth-child(1):hover{
+  background-color: red;
+}
+.modaleBottoni .button-81:nth-child(2):hover{
+  background-color: green;
+}

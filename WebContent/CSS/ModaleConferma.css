@@ -1,0 +1,61 @@
+
+ #modalConferma{
+ display: none
+ }
+ 
+ #modalConferma{
+	width: 100%;
+	position: fixed;
+	height: 100%;
+    top: 0;
+	display: none;
+  overflow: auto;
+  z-index: 4;
+  padding:5px;
+}
+#modalConfermaBody{
+left: 16%;
+    width: 66%;
+    max-width: 100%;
+    min-width: 215px;
+    min-height: 350px;
+    max-height:150px;
+    top: 10%;
+    position: relative;
+    background-color: whitesmoke;
+	
+}
+#modalConfermaHeader{
+	position: relative;
+	height: 55px;
+	width: 100%;
+	background-color: darkred;
+	color: whitesmoke;
+}
+#modalConfermaHeader>p {
+	position: absolute;
+	display: inline;
+	margin: 17px 0 0px 17px;
+	padding-left: 5px;
+}
+
+#formConferma {
+  justify-content: center;
+  margin-top: 7%;
+	display: flex;
+	flex-wrap: wrap ;
+  gap: 15px 35px;
+}
+
+
+.modalConfermaBottoni button{
+  padding-left: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+#testoConferma{
+	    width: 100%;
+    text-align: center;
+padding: 20px;
+}

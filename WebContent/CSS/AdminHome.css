@@ -1,0 +1,47 @@
+ 
+#homeAdmin{
+  position: relative;
+  width: 100%;
+  text-align: center;
+} 
+/*cose vecchie*/
+.button-acquista{
+  margin-left: 0;
+    border-radius: 0;
+    width: 100%;
+}
+.button-acquista:after{
+  width: 120%;
+  height: 200%;
+  bottom: -175%;
+}
+  .contentBottone{
+    display: inline-grid;
+    width: 50%;
+  }
+ 
+
+  .button-acquista:after {
+    background-color: cornflowerblue;
+  }
+  .barraTitolo span:nth-child(1){
+    font-size: 67%;
+  }
+
+  /*contenitore submenu*/
+  .contenitoreSubMenu{
+    width: 81%;
+    display: none;
+
+  }
+  .contenitoreSubMenu button{
+    width: 100%;
+    padding: 18px 0 18px 0;
+  }
+  @media screen and (max-width: 800px) {
+    #menuLaterale{
+      display: block;
+    }
+    
+  }
+   

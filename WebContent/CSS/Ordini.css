@@ -1,0 +1,124 @@
+
+#Ordini{
+  
+    display: flex;
+    flex-wrap: wrap;
+  
+    
+  }
+  #titoloOrdini{
+  
+  flex-basis: 100%;
+  
+  
+  }
+  #ordinaOrdina{
+  
+    text-align: center;
+    flex-basis: 100%;
+    
+  }
+  
+  #OrdiniDiv{
+  	width: 100vw;
+    height: 100vh;
+    flex-basis: 100%;
+    padding-left: 25%;
+	padding-right: 25%;
+    
+  }
+  
+  /*****************************************ORDINA***************/
+  #ordina {
+    margin-top: 9px;
+      width: 14%;
+      max-width: 90px;
+      min-width: 60px;
+      padding: 1%;
+      border: none;
+      border-radius: 4px;
+      background-color: #f1f1f1;
+      left: 41%;
+      position: relative;
+  }
+  
+  .barraTitolo p{
+    color: white;
+    position: relative;
+    font-size: 54%;
+    text-align: left;
+    line-height: 1.2;
+  }
+  
+  
+  .immagineOrdine img{
+  margin-left:10px;
+  padding: 15px;
+  width: 100px;
+  object-fit: contain;
+  }
+  .immagineOrdine{
+    padding-top: 13px;
+  }
+  
+  .immagineOrdine img:hover {
+  cursor: pointer;
+  box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.5);
+  }
+  table{
+    text-align: left;
+    border-collapse: collapse;
+    margin-top: 13px;
+    margin-bottom: 45px;
+    border: 1px solid white ;
+  }
+  th{
+	padding-left: 10px;
+	padding-top:10px;
+    
+  }
+  .bordoSuperiore{
+    border-top: solid;
+    
+  }
+  .paddingInferiore{
+    padding-bottom: 25px;
+  }
+  .backgroundBianco{
+    background-color: whitesmoke;
+  }
+    .backgroundVerde{
+    background-color: lightgreen;
+  }
+  td p {
+    color: white;
+  }
+  .colorWhite{
+    color: white;
+  }
+  .fontSizeReduct{
+    font-size: medium;
+  }
+  .evidenzia{
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .evidenzia:hover{
+    color: cornflowerblue;
+  }
+  
+  #cartaValore , #indirizzoValore{
+  max-width: 300px
+  }
+  .thvuoto{
+  padding: 0;
+  }
+@media screen and (max-width: 800px){
+  #OrdiniDiv{
+    padding-left: 0%;
+	padding-right: 0%;
+  }
+
+}
+
+  

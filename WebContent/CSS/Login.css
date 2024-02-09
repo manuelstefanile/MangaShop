@@ -1,0 +1,148 @@
+
+
+#login{
+  overflow: auto;
+    position: relative;
+    top: 5%;
+    left: 25%;
+    width: 50%;
+    min-width: 327px;
+    height: 68%;
+    min-height: 374px;
+    /* border-radius: 10%; */
+    background-color: white;
+   margin-bottom: 150px;
+}
+#videoLogin {
+  width: 40%;
+    /* border-radius: 10% 0% 0% 10%; */
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  #videoLogin video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+#titoloLogin {
+  background-color: darkred;
+    height: 14%;
+    width: 14%;
+    /* min-width: 3px; */
+    position: absolute;
+    top: 0%;
+    border-radius: 0 0 57px 57px;
+    padding: 8px;
+    left: 59%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#titoloLogin p {
+  text-align: center;
+    font-size: 100%;
+    color: white;
+    margin: 0;
+}
+#formLogin{
+  width: 40%;
+    position: absolute;
+    max-height: 287px;
+    top: 20%;
+    left: 50%;
+  
+}
+.inputLogin{ 
+  width: 100%; /* impostiamo la larghezza in percentuale */
+  box-sizing: border-box; /* includi il padding e il bordo all'interno delle dimensioni totali */
+  padding: 5% 0; /* impostiamo il padding in percentuale */
+}
+.inputLogin input, .inputLogin label{
+  width: 90%;
+ 
+}
+input{
+  border: 3px solid #ccc;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  outline: none;
+}
+input:focus {
+  border: 3px solid #ac2020;
+}
+
+/* CSS */
+
+.contentBox{
+  position: relative;
+    left: -4%;
+    border-radius: 12%;
+    margin: 10px;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.buttonBox{
+  position:relative;
+  max-width: 200px;
+  min-width: 150px;
+  flex: 20%;
+}
+
+button{
+  padding: 10px 10px;
+    width: 100%;
+    /* height: 41px; */
+    position: relative;
+    background: rgba(10, 0, 0, 0.27);
+    text-transform: uppercase;
+    color: white;
+    font-weight: 700;
+    /* letter-spacing: 1px; */
+    border: none;
+    font-size: 15px;
+    outline: none;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+    cursor: pointer;
+}
+/* FIFTH BUTTON */
+
+#fifth{
+  overflow:hidden;
+  border: 1px solid rgba(255, 255, 255, 0);
+  transition:all .2s ease-in-out;
+  
+}
+
+#fifth:before{
+  content:" ";
+  display:block;
+  width:200px;
+  height:80px;
+  background:rgba(12, 0, 0, 0.4);
+  position:absolute;
+  top:-10px;
+  left:-200px;
+  transform:rotate(-45deg);
+  transition:all .3s ease-in-out;  
+}
+
+#fifth:hover:before{
+  margin-left:300%;
+}
+
+#fifth:hover {
+  border: 1px solid rgba(12, 0, 0,  1);
+}
+@media screen and (max-width: 401px) {
+    #login{
+      left: 10px;
+  
+    }
+    
+  }
+

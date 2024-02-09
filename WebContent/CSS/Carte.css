@@ -1,0 +1,183 @@
+/*CARTE*/
+
+.content{
+    background-color: red;
+  }
+  :root {
+  --card-height: 240px;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
+
+.card {
+  width: 242px;
+  min-width: 198px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding: 52px 10px 0px 0px;
+  perspective: 2500px;
+  margin: 0 5%;
+  
+}
+
+.cover-image {
+  width: 100%;
+  /*height: 100%;
+  min-height:365px;*/
+  object-fit: cover;
+  cursor:pointer;
+}
+
+.wrapper {
+  transition: all 0.5s;
+  position: absolute;
+  width: 100%;
+  max-width:225px;
+  z-index: -1;
+  cursor:pointer;
+}
+
+.card:hover .wrapper {
+  transform: perspective(900px) translateY(-5%) rotateX(25deg) translateZ(0);
+  box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 35px 32px -8px rgba(0, 0, 0, 0.75);
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  opacity: 0;
+  width: 100%;
+  height: 80px;
+  transition: all 0.5s;
+  position: absolute;
+  left: 0;
+}
+.wrapper::before {
+  top: 0;
+  height: 100%;
+  background-image: linear-gradient(
+    to top,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+.wrapper::after {
+  bottom: 0;
+  opacity: 1;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 46%,
+    rgba(12, 13, 19, 0.5) 68%,
+    rgba(12, 13, 19) 97%
+  );
+}
+
+.card:hover .wrapper::before,
+.wrapper::after {
+  opacity: 1;
+}
+
+.card:hover .wrapper::after {
+  height: 120px;
+}
+.title {
+	cursor:pointer;
+  
+    transition: transform 0.5s;
+    width: auto;
+    max-width:208px;
+    max-height: 65px;
+}
+.card:hover .title {
+  transform: translate3d(0%, -50px, 100px);
+}
+
+.character {
+	cursor:pointer;
+    width: auto;
+    opacity: 0;
+    bottom: 35px;
+    transition: all 0.5s;
+    position: absolute;
+    z-index: 0;
+    max-height: 200px;
+}
+
+.card:hover .character {
+  opacity: 1;
+  transform: translate3d(0%, -30%, 100px);
+}
+/*********************************************************************************************************************/
+.carte {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  height: 555px;
+  /* justify-content: center; */
+  /* align-items: center; */
+  margin-top: 30px;
+  margin-bottom: 5px;
+}
+
+.prezzo{
+  color: white;
+  width: 150%;
+  max-width: 100%;
+  margin-bottom: -90px;
+  position: absolute;
+  overflow: hidden;
+  top:100%;
+
+}
+
+
+
+
+.titoloManga{
+  max-height: 96px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0;
+    padding: 14px 5px 10px 5px;
+  
+}
+.prezzoManga{
+      margin: 0;
+    font-size: 26px;
+}
+@media screen and (max-width: 600px){
+  .barraTitolo{
+    text-align: left;
+  }
+  .title {
+
+    max-width:181px;
+    
+}
+}
+@media screen and (max-height: 600px){
+  .card{
+    min-width: 169px;
+  }
+  .carte{
+    margin-top: 0px;
+  }
+}
+@media screen and (max-height: 400px){
+  .card{
+    
+    padding-top: 0;
+  }
+  .carte{
+    margin-top: 40px;
+  }
+
+}
+
+

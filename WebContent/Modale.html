@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://fonts.googleapis.com/css?family=Raleway:900" rel="stylesheet">
+  
+  <link rel="stylesheet" href="CSS/Modale.css">
+  
+  
+
+  <style>
+
+  </style>
+</head>
+
+<body>
+        <!-----------------------------------------MODALE IMMAGINI--------------------------->
+    
+
+ <div id="modaleProfilo">
+	<div id="modaleProfiloBody">
+		<div id="modalHeader">
+			<p>Immagini</p>
+			
+		</div>
+    <div class="formModal formCarta"  id="formImmaginiManga">
+      <div class="contenitorePadreImmagini">
+        <div id="oggettoInput">Risultato Immagini</div>
+        <div  class="divImmagine">
+          <img  class="immaginiCaricare" src="Immagini/gif/figHZH.gif">
+        </div>
+        <div  class="titoloImmagineTesto"></div>
+      </div>
+      
+      <div class="contenitorePadreImmagini">
+        <div id="oggettoInput">Aggiungi una COPERTINA al manga</div>
+        <div id="immagineCoverContenitore" class="divImmagine">
+          <img id="immagineCoverimg" class="immaginiCaricare" src="">
+        </div>
+        <div id="titoloFileimmagineCover" class="titoloImmagineTesto"></div>
+        <div class="contenitoreInput">
+          <label for="immagineCover">
+            <i id="uploadButton2" class="fa-solid fa-upload"></i> premimi
+          </label>
+          <input type="file" id="immagineCover" accept="image/*" name="immagineCover" class="upload-button">
+        </div>
+      </div>
+      
+      <div class="contenitorePadreImmagini">
+        <div id="oggettoInput">Aggiungi un TITOLO png al manga</div>
+        <div id="immagineTitoloContenitore" class="divImmagine">
+          <img id="immagineTitoloimg" class="immaginiCaricare"  src="">
+        </div>
+        <div id="titoloFileimmagineTitolo" class="titoloImmagineTesto"></div>
+        <div class="contenitoreInput">
+        <label for="immagineTitolo">
+          <i id="uploadButton2" class="fa-solid fa-upload"></i> premimi
+        </label>
+        <input id="immagineTitolo" accept="image/*" name="immagineTitolo" type="file" class="upload-button">
+      </div>
+      </div>
+      
+      <div class="contenitorePadreImmagini">
+        <div id="oggettoInput">Aggiungi un PERSONAGGIO png al manga</div>
+        <div id="immaginePersonaggioContenitore" class="divImmagine">
+          <img id="immaginePersonaggioimg" class="immaginiCaricare"  src="">
+        </div>
+        <div id="titoloFileimmaginePersonaggio" class="titoloImmagineTesto"></div>
+        <div class="contenitoreInput">
+        <label for="immaginePersonaggio">
+          <i id="uploadButton2" class="fa-solid fa-upload"></i> premimi
+        </label>
+        <input id="immaginePersonaggio"accept="image/*" name="immaginePersonaggio" type="file" class="upload-button">
+      </div>
+      </div>
+    </div>
+
+    
+    <form class="formModal formAutore"  enctype="multipart/form-data">
+      <div class="modaleInput">
+        <label for="nomeAutore" >Nome</label>
+        <input type="text" maxlength="20" name="nomeAutore" id="nomeAutore">
+      </div>
+      <div class="modaleInput">
+        <label for="cognomeAutore" >Cognome</label>
+        <input type="text" maxlength="30" name="cognomeAutore" id="cognomeAutore">
+      </div>
+    </form>
+
+        
+    <form class="formModal formCategoria">
+      <div class="modaleInput">
+        <label for="nomeCategoria" >Categoria</label>
+        <input type="text" maxlength="20" name="nomeCategoria" id="nomeCategoria">
+      </div>
+      <div class="modaleInput">
+        <label for="descrizioneCategoria" >Descrizione categoria</label>
+        <textarea rows="4" maxlength="255" name="descrizioneCategoria" id="descrizioneCategoria"></textarea>
+      </div>
+    </form>
+
+    <form class="formModal formEditore">
+      <div class="modaleInput">
+        <label for="nomeEditore" >Casa editrice</label>
+        <input type="text" maxlength="20" name="nomeEditore" id="nomeEditore">
+      </div>
+    </form>
+    
+     <form class="formModal formCartaCredito">
+      
+      <div class="modaleInput">
+        <label for="codice" >Codice</label>
+        <input type="text" name="codice" placeholder="1234 2345 2345 6789" maxlength="16" id="codice">
+      </div>
+      <div class="modaleInput">
+        <label for="data" >Data</label>
+        <input type="date" name="data" id="data">
+      </div>
+      <div class="modaleInput">
+        <label for="nome" >Nome e cognome</label>
+        <input type="text" name="nomeTitolare" placeholder="Mario Rossi" id="nomeTitolare">
+      </div>
+      <div class="modaleInput">
+        <label for="cvc" >CVC</label>
+        <input type="text" maxlength=3 placeholder="098" name="cvc" id="cvc">
+      </div>
+    </form>
+
+    <form class="formModal formIndirizzo">
+      <div class="modaleInput">
+        <label for="Regione" >Regione</label>
+        <input type="text" placeholder="Campania" required name="regione" id="regione">
+      </div>
+      <div class="modaleInput">
+        <label for="Provincia" >Provincia</label>
+        <input type="text" placeholder="Napoli" required name="provincia" id="provincia">
+      </div>
+      <div class="modaleInput">
+        <label for="cap" >Cap</label>
+        <input type="text" placeholder="80039" maxlength="5" required name="cap" id="cap">
+      </div>
+      <div class="modaleInput">
+        <label for="citta" >Citta</label>
+        <input type="text" placeholder="Cicciano" required name="citta" id="citta">
+      </div>
+      <div class="modaleInput">
+        <label for="via" >Via</label>
+        <input type="text" placeholder="Via torino 12" required name="via" id="via">
+      </div>
+    </form>
+
+
+		<div id="modalFooter">
+      <div class="modaleBottoni">
+        <button class="button-81" role="button" id="annullaButton"  onclick="chiudiModale()">Annulla</button>
+        <button class="button-81" id="salvaButton" type="button" onclick="chiudiModale();insert();" role="button" >Conferma</button>
+       </div>
+    </div>
+    
+
+
+
+
+	</div>
+ </div>
+  <script src="JS/Modale.js"></script>
+
+</body>
+
+</html>

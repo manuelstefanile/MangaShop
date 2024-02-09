@@ -1,0 +1,56 @@
+.barraTitolo{
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 0px 5px 5px 5px;
+  color: black;
+  border-radius: 10px 10px 0px 10px;
+  text-align: left;
+  justify-content: center;
+  font-size: 190%;
+  margin-top: 20px;
+  padding-top: 5%;
+  border-bottom: 5px solid red; 
+  
+  
+}
+.barraTitolo .vediTutto{
+  color: white;
+  position:absolute;
+  right: 8%;
+  font-size: 20px;
+  display: flex;
+  margin-top: -25px;
+}
+.barraTitolo .vediTutto:hover{
+  cursor: pointer;
+}
+
+.TitoloGrande{
+  color: rgba(225,225,225, .01);
+  background-image: url("../Immagini/mangaTitoloCateg.jpg");
+  background-repeat: repeat;
+  -webkit-background-clip:text;
+  animation: animate 100s ease-in-out infinite;
+  font-weight: 900;
+}
+@keyframes animate {
+    0%, 100% {
+      background-position: left top;
+    }
+    25%{
+      background-position: right bottom;
+     }
+    50% {
+      background-position: left bottom;
+    }
+    75% {
+      background-position: right top;
+    }   
+}
+
+@media screen and (max-width: 400px){
+	.barraTitolo{
+		font-size:18px;
+	}
+	
+}

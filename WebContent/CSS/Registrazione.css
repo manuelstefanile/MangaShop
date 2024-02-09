@@ -1,0 +1,177 @@
+@charset "UTF-8";
+
+
+
+
+#contenitore {
+  overflow: hidden;
+  position: relative;
+  top: 5%;
+  left: 25%;
+  width: 50%;
+  min-width: 477px;
+  /* height: 615px; */
+  background-color: whitesmoke;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  
+  margin-bottom: 150px;
+  
+  }
+  
+  
+  
+  
+  #titolocontenitore {
+    background-color: darkred;
+    height: 8%;
+    /* width: 100%; */
+    position: relative;
+    bottom: 46%;
+    padding: 1%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 169%;
+  }
+  
+  #titolocontenitore p {
+    text-align: center;
+    font-size: 170%;
+    color: white;
+    margin: 0;
+  }
+  #formcontenitore{
+    display: flex;
+    flex-wrap: wrap;
+     width: 73%;
+     left: 13%;
+    position: relative;
+    justify-content: center;
+    padding-top: 6%;
+    padding-bottom: 3%;    
+  }
+  .inputcontenitore{ 
+    width: 48%;
+      box-sizing: border-box;
+      padding: 5% 0 0 0;
+      
+      margin-right: 2%;
+      margin-bottom: 5%;
+  }
+.inputcontenitore input{
+  border-bottom: solid;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background: none;
+}
+
+  .inputcontenitore input, .inputcontenitore label{
+    width: 90%;
+    font-size: medium;
+    color: black;
+  }
+  #inputcontenitore input{
+    border: 2px solid #ccc;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    outline: none;
+    font-size: 15px;
+  }
+  input:focus {
+    border: 2px solid #ac2020;
+  }
+
+  .effetto{
+    width: 10%;
+      height: 10%;
+      
+      position: relative;
+      animation-name: movimenti;
+      animation-duration: 100s;
+      animation-iteration-count: infinite;
+      animation-timing-function: linear;
+  }
+  
+  @keyframes movimenti {
+    0%   {right: 45%; top:0%;}
+    25%  {right: 0%; top:70%;}
+    50%  {right: -25%; top:10%;}
+    75%  {right: -35%; top:90%;}
+    85%  {right: 25%; top:70%;}
+    100% {right: 45%; top:0;}
+  }
+  .effetto img{
+    position: absolute;
+      left: -350px;
+      top: -420px;
+      opacity: 10%;
+  }
+    
+  @media screen and (max-width: 650px) {
+    #contenitore{
+      left: 12%;
+  
+    }
+    
+  }
+  @media screen and (max-width: 550px) {
+    #contenitore{
+      min-width: 338px;
+      
+  
+    }
+    #formcontenitore{
+      
+    }
+    .inputcontenitore{
+      width: 90%;
+    }
+
+    
+  }
+  
+  /*sovrascrivo la css bottone.css*/
+.button-acquista{
+    margin-left: 0;
+    border-radius: 0;
+  }
+  .button-acquista:after{
+    background-color: green;
+  }
+  
+  
+ /* Stile per l'icona occhio */
+.input-password .eye-icon {
+    position: relative;
+    /* top: 50%; */
+    bottom: 64%;
+    left: 87px;
+    transform: translateY(-50%);
+    
+}
+.input-password .eye-icon i {
+    cursor: pointer;
+    
+}
+
+/*******************************************************************************************************************************/
+    
+  @media screen and (max-width: 650px) {
+    #contenitore{
+      min-width: 270px;
+  
+    }
+    
+  }
+    @media screen and (max-width: 281px) {
+    #contenitore{
+      min-width: 200px;
+  
+    }
+    
+  }
+
+ 

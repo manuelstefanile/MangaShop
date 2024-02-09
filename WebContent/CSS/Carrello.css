@@ -1,0 +1,115 @@
+#Carrello{
+  display: inline-block;
+  
+  position: relative;
+  width: 80%;
+
+  left: 10%;
+  top: 10%;
+
+}
+#headerCarrello{
+  padding-bottom: 5%;
+  position: relative;
+  width: 100%;
+  height: 20%;
+  color: white;
+  /*background-color: red;*/
+  display: flex;
+  justify-content: center; /* allinea il contenuto orizzontalmente */
+align-items: center; /* allinea il contenuto verticalmente */    
+}
+
+#headerCarrello i{
+  padding-right: 1%;
+}
+#headerCarrello p{
+  display: inline-block;
+}
+#headerCarrello p:nth-child(2){
+  color: red;
+  
+}
+
+.separatoreHeaderCarrello{
+  width: 3px;
+  height: 33px;
+  position: relative;
+  background: aliceblue;
+  border-radius: 51px;
+  margin-left: 1%;
+  margin-right: 1%;
+}
+
+#tabellaCarrello{
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  color: white;
+}
+
+th, td {
+width: 20%;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+}
+td p{
+max-width: 80%;
+}
+
+th {
+  font-size: large;
+  color: white;
+}
+#tabellaCarrello img {
+
+cursor:pointer;
+padding: 5px;
+width: 80px;
+object-fit: contain;
+}
+
+#tabellaCarrello img:hover {
+box-shadow: 0 0 2px 1px rgba(255, 255, 255, 0.5);
+}
+
+#procediCarrello{
+	min-height: 422px;
+  color: white;
+  display: flex;
+  justify-content: center; /* allinea il contenuto orizzontalmente */
+  align-items: center; /* allinea il contenuto verticalmente */  
+  position: relative;
+  width: 100%;
+    
+}
+#procediCarrello p {
+  padding-right: 2%;
+  font-size: 152%;
+}
+#procediCarrello p:nth-child(2) {
+  
+  font-size: 200%;
+}
+#procediCarrello button{
+  margin:0;
+}
+.button-acquista:after {
+
+  background-color: green;
+}
+#massimoManga{
+	display: inline;
+    font-size: 16px;
+}
+input[type="number"]{
+width: 25%;
+min-width: 35px;
+}

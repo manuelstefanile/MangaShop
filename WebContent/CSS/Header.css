@@ -1,0 +1,473 @@
+@charset "UTF-8";
+html, body {
+  font-family: inherit;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  height: 100%;
+  background-color:#222831;
+}
+/*****************************************scrollBarr*********************************/
+  /* Nascondi la scrollbar standard */
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    background-color: #f5f5f5;
+    
+    
+  }
+  
+  /* Imposta lo stile del thumb della scrollbar */
+  ::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px;
+    border: 2px solid #f5f5f5;
+  }
+  
+  /* Imposta lo stile del track della scrollbar */
+  ::-webkit-scrollbar-track {
+    background-color: #222831;
+  }
+  
+  
+
+/******************************************** NAVBAR **********************************************************************/
+.flexbox {
+  background-color: darkred;
+  width: 100%;
+  height: 63px;
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+  align-items: center;
+}
+.divNav{
+  color: white;
+  cursor: pointer;
+  position: absolute;
+  transition: all 0.1s;
+  transition: background-color 0.3s;
+  display: flex;
+  
+}
+
+.divNav:nth-child(1){ 
+  left: 100px;
+}
+
+.divNav:nth-child(2){
+  left: 192px;
+}
+.divNav:nth-child(3){
+  right: 0;
+}
+.divNav:nth-child(4){
+  right: 91px;
+}
+.divNav:nth-child(5){
+  right: 181px;
+}
+.divNav:hover{
+  background-color: #222831;
+}
+.divNav a{
+	text-decoration: none;
+	color: white;
+	padding: 16px;
+	padding-top: 22px;
+    padding-bottom: 22px;
+}
+
+.flexbox>a:nth-child(2){
+  color: white;
+  left: 230px;
+  cursor: pointer;
+  position: absolute;
+}
+/***************************LOGO****************************************/
+#logoContenitore{
+	cursor:pointer;	
+  position: absolute;
+  padding-top: 20px;
+}
+#logoTitolo  {
+  color: white;
+ 
+display: inline;
+}
+#logoCerchio{
+  background-color: #222831;
+  border-style: solid;
+  border-color: white;
+  bottom: 53%;
+  animation-name: logo;
+  animation-duration: 1.6s;
+  width: 20px;
+  height: 20px;
+  background-size: cover;
+  margin-left: 4%;
+  position: absolute;
+  display: inline;
+  border-radius: 25px;
+}
+@keyframes logo {
+from {bottom: 100%;}
+to {bottom: 53%;}
+}
+/***********************************************search*****************************************/
+.search {
+  position: absolute;
+  right: 281px  ;
+  margin: 20px;
+}
+
+.search > h3 {
+  font-weight: normal;
+}
+
+.search > h1,
+.search > h3 {
+  color: white;
+  margin-bottom: 15px;
+  text-shadow: 0 1px #0091c2;
+}
+
+.search > div {
+  display: inline-block;
+  position: relative;
+  filter: drop-shadow(0 1px #0091c2);
+}
+
+.search > div:after {
+  content: "";
+  background: white;
+  width: 4px;
+  height: 14px;
+  position: absolute;
+  top: 35px;
+  right: 2px;
+  transform: rotate(135deg);
+}
+
+.search > div > input {
+  color: white;
+  font-size: 16px;
+  background: transparent;
+  width: 25px;
+  height: 25px;
+  padding: 5px;
+  border: solid 3px white;
+  outline: none;
+  border-radius: 35px;
+  transition: width 0.5s;
+}
+
+.search > div > input::placeholder {
+  color: #efefef;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+}
+
+.search > div > input:focus::placeholder {
+  opacity: 1;
+}
+
+.search > div > input:focus,
+.search > div > input:not(:placeholder-shown) {
+  width: 180px;
+}
+/********************************************************SEARCH2"********************************************/
+#searchManga{
+      border-radius: 10px 10px 10px 10px;
+      background: ghostwhite;
+    position: absolute;
+    width: auto;
+    height: 103px;
+    top: 72px;
+    right: 200px;
+    z-index: 5;
+    display: inline-table;
+  
+  }
+  #searchManga > div:after {
+  	content: "";
+
+}
+  .contenitoreSearch{
+    border-bottom-width: 2px;
+    border-top-width: 0px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+         border-style:solid;"
+
+    z-index: 5;
+    width: 400px;
+   
+  }
+  .immagineSize{
+     padding: 15px 15px 0 10px;
+     border-radius:10px;
+     margin:10px;
+    width: 80px;
+    object-fit: contain;
+     cursor:pointer;
+  }
+  .immagineSize:hover {
+	box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
+	
+	}
+  .testoSearchManga{
+    margin: 0;
+    display: inline-block;
+    position: relative;
+    bottom: 50px;
+    width: 205px;
+  }
+
+
+
+/******************************************** MENU LATERALE **********************************************************************/
+
+#menuLaterale{
+  font-size:30px;
+  cursor:pointer;
+    
+  color: white;
+  padding: 6px;
+  position: absolute;
+  top: 18PX;
+  left: 8px;
+  display: inline-block;
+  z-index: 0;
+  transition: all 0.3s;
+ }
+ 
+
+#menuLaterale:hover{
+    
+  color: black;
+  
+ }
+  
+   .muoviSinistra {
+    right: -45px;
+  }
+   
+   .overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 4;
+    top: 0;
+    left: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0, 0.9);
+    overflow-x: hidden;
+    transition: 0.5s;
+  }
+  .overlay a {
+    text-decoration: none;
+    color: rgb(129, 129, 129);
+    padding: 16px;
+    margin-bottom: 9px;
+    border: 2px solid white;
+    background-color: white;
+    display: block;
+    transition: all 0.2s ease 0s;
+  }
+  
+  .overlay-content {
+    padding-top: 3%;  
+    position: relative;
+    top: 10%;
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .overlay a:hover, .overlay a:focus {
+    color: black;
+  }
+  .overlay .closebtn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+    background-color: black;
+    border: 0;
+  }
+  #oggNavRespons1,#oggNavRespons2,#oggNavRespons3,#oggNavRespons4,#oggNavRespons5{
+    display: none;
+  }
+
+  .scuro {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.6;
+    display: block;
+  }
+  
+  /************************************BOTTONE X**********************************/
+  #x{
+    padding: 0%;
+    font-size: 170%;
+    margin: 0;
+    cursor: pointer;
+  }
+  #x:hover{
+    color: red;
+  }
+  @media screen and (max-height: 450px) {
+    .overlay a {font-size: 18px}
+    .overlay .closebtn {
+    font-size: 40px;
+    top: 0px;
+    right: 35px;
+
+    }
+  }
+  
+  /*******************************************DROPDOWN MENNU**************************************/
+  .menuDropdown {
+    cursor: pointer;
+    
+    
+  }
+  /*muovi a destra profilo*/
+  .menuDropdown:focus {
+    right: -45px;
+  }
+  
+  
+  /*muovi a sinistra il dropdown*/
+   
+  .menuDropdown-content {
+    
+    margin-top: 10px;
+    position: relative;
+    
+    color: white;
+    min-width: 160px;
+    padding: 3px 5px;
+    left: -7%;
+    transition: left 0.4s;
+    display: none;
+  }
+
+  
+  /* Aggiunta per far scendere uno sopra l'altro */
+  
+  .menuDropdown:focus .menuDropdown-content {
+    display: block;
+    padding-left: 10px;
+    right: 13px;
+  }
+
+  .menuDropdown-content:hover{
+    left: -20%;
+    cursor: pointer;
+  
+    
+  }
+   
+ #menuLateraleProfilo{
+  color: white;
+    padding: 6px;
+    position: absolute;
+    top: 18PX;
+    left: 20px;
+    display: inline-block;
+    z-index: 1;
+    transition: all 0.3s;
+ }
+ 
+ /***********NOTIFICA**************/
+ .notifica{
+background-color: red;
+    border-radius: 20px;
+    width: 20px;
+    position: absolute;
+    top: -5px;
+    left: 68px;
+    text-align: center;
+
+}
+
+/**********************************************RESPONSIVE*****************************/
+ @media screen and (max-width: 1200px){
+
+  #logoContenitore{
+    left: 84px;
+  }
+  #logoTitolo {
+    font-size: 24px;
+  }
+   .barraTitolo p {
+    font-size: 16px;
+  }
+  
+  .divNav:nth-child(1),.divNav:nth-child(2){
+    display: none;
+  }
+  #oggNavRespons1, #oggNavRespons2{
+    display: block;
+  }
+}
+@media screen and (max-width: 800px){
+#searchManga{
+      
+    right: 18px;
+    
+  
+  }
+
+  .divNav:nth-child(3),.divNav:nth-child(4),.divNav:nth-child(5){
+    display: none;
+  }
+  #oggNavRespons3, #oggNavRespons4,#oggNavRespons5{
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 500px){
+.search{
+  position: relative;
+  /* right: 281px; */
+  text-align: center;
+  /* left: 128px; */
+  margin: 20px;
+}
+#logoContenitore{
+	display:none;
+}
+}
+
+@media screen and (min-width: 501px){
+
+#logoContenitore{
+	display:block;
+}
+}
+@media screen and (max-width: 430px){
+.contenitoreSearch {
+   
+    width: 332px;
+}
+.testoSearchManga {
+	width:130px; 
+}
+}
+@media screen and (max-width: 364px){
+.contenitoreSearch {
+   
+    width: 273px;
+}
+.testoSearchManga {
+	font-size: small;
+	width:100px; 
+}
+}

@@ -1,0 +1,90 @@
+ 
+
+
+
+
+/*new*/
+  .tableGeneral {
+    display: table;
+    width: 95%;
+    
+    position: relative;
+    max-width: 600px;
+    background-color: whitesmoke;
+    border-collapse: collapse;
+    margin-top: 40px;
+}
+
+.rowGeneral {
+  display: table-row;
+}
+
+.cellGeneral {
+  display: table-cell;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+#headerTable{
+  background-color: darkcyan;
+}
+
+
+#titolo{
+  color: white;
+  position: relative;
+  top: 30px;
+  
+  width: 20%;
+}
+.bottoneAggiungi{
+  width: 30%;
+  
+  z-index: 2;
+}
+.bottoneAggiungi::after{
+  background-color: cornflowerblue;
+}
+.cellGeneral textarea{
+	top :20px;
+	position: relative;
+}
+.cellGeneral input, {
+  height: 25px;
+    top: 20px;
+    position: relative;
+}
+@media screen and (max-width: 840px){
+  .tableGeneral{
+    left: 5px;
+  }
+  #titolo{
+    left: 5px;
+  }
+  .bottoneAggiungi{
+    left: 5px;
+    min-width: 100px;
+  }
+}
+
+#bottoniAzione{
+  max-width: 57px;
+}
+#bottone-salva{
+  margin-top:0;
+
+}
+@media screen and (max-width: 500px){
+	input {
+	width:70px;
+}
+	
+}
+@media screen and (max-width: 500px){
+.cellGeneral textarea {
+    width: 85px;
+    
+    
+}
+}
+   
